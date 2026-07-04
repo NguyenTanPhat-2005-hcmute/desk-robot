@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test EmailJS - Robot Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#eef5ff;margin:0;padding:28px;color:#102033}
+    .box{max-width:720px;margin:auto;background:#fff;padding:26px;border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.12)}
+    input,button{width:100%;padding:14px;border-radius:12px;border:1px solid #d3e2f5;margin:8px 0;font-size:16px}
+    button{background:#0b72c9;color:white;font-weight:700;cursor:pointer;border:0}
+    .ok{color:#087a3b;font-weight:700;white-space:pre-wrap}.err{color:#d62828;font-weight:700;white-space:pre-wrap}
+    code{background:#f3f7ff;padding:2px 6px;border-radius:6px}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Test EmailJS Robot-Dashboard</h2>
+    <p>File này dùng đúng cấu hình của m: <code>service_838817g</code>, <code>template_wb9sbcl</code>, <code>KuiCEO4oRmFlwzxxE</code>.</p>
+    <input id="name" placeholder="Tên" value="Tấn Phát">
+    <input id="email" placeholder="Email nhận OTP" value="phamnhiem2k6@gmail.com">
+    <button onclick="testSDK()">Test bằng SDK giống EmailJS Test It</button>
+    <button onclick="testREST()">Test bằng REST API dự phòng</button>
+    <div id="result"></div>
+  </div>
+
+<script>
+const EMAILJS_SERVICE_ID = "service_838817g";
+const EMAILJS_TEMPLATE_ID = "template_wb9sbcl";
+const EMAILJS_PUBLIC_KEY = "KuiCEO4oRmFlwzxxE";
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+function params(){
+  const email = document.getElementById('email').value.trim();
+  const name = document.getElementById('name').value.trim() || email;
+  return {
+    to_name: name,
+    otp_code: String(Math.floor(100000 + Math.random() * 900000)),
+    email: email,
+    to_email: email,
+    reply_to: email,
+    from_name: name,
+    user_name: name,
+    user_email: email
+  };
+}
+function show(msg, ok){
+  const r=document.getElementById('result');
+  r.className = ok ? 'ok' : 'err';
+  r.textContent = msg;
+}
+function errText(e){
+  if(!e) return 'Không rõ lỗi';
+  if(e.text) return e.text;
+  if(e.message) return e.message;
+  try{return JSON.stringify(e)}catch(_){return String(e)}
+}
+async function testSDK(){
+  show('Đang gửi bằng SDK...', true);
+  try{
+    const p = params();
+    const res = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, p);
+    show('SDK gửi thành công. OTP vừa gửi: ' + p.otp_code + '\nResponse: ' + JSON.stringify(res), true);
+  }catch(e){
+    show('SDK lỗi: ' + errText(e), false);
+  }
+}
+async function testREST(){
+  show('Đang gửi bằng REST...', true);
+  try{
+    const p = params();
+    const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        service_id: EMAILJS_SERVICE_ID,
+        template_id: EMAILJS_TEMPLATE_ID,
+        user_id: EMAILJS_PUBLIC_KEY,
+        template_params: p
+      })
+    });
+    const text = await res.text();
+    if(!res.ok) throw new Error(res.status + ' ' + text);
+    show('REST gửi thành công. OTP vừa gửi: ' + p.otp_code + '\nResponse: ' + text, true);
+  }catch(e){
+    show('REST lỗi: ' + errText(e), false);
+  }
+}
+</script>
+</body>
+</html>
