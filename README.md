@@ -1,65 +1,65 @@
 # Desk Robot
 
-**Robot để bàn hỗ trợ học tập, giám sát môi trường và tương tác với AI.**
+**An ESP32 desk robot for study support, environmental monitoring, and local AI assistance.**
 
-Desk Robot kết hợp phần cứng ESP32, dashboard web và ứng dụng Python để tạo một trợ lý đặt tại góc học tập. Robot đo điều kiện môi trường, hiển thị thông tin và biểu cảm trên OLED, chuyển động bằng servo và hỗ trợ phiên học Pomodoro. Dashboard giúp người dùng theo dõi dữ liệu, điều khiển robot và quản lý hoạt động học tập; ứng dụng Python bổ sung khả năng hỏi đáp bằng model chạy cục bộ qua Ollama.
+Desk Robot combines ESP32 hardware, a web dashboard, and a Python application into a companion for a study workspace. The robot measures environmental conditions, displays information and expressions on an OLED screen, moves its head and arms using servos, and supports Pomodoro study sessions. The dashboard provides sensor monitoring, robot controls, and study management tools, while the Python application adds conversational assistance through a local Ollama model.
 
-Đây là dự án nguyên mẫu phục vụ học tập và thử nghiệm tích hợp IoT với AI. Repository bao gồm firmware, giao diện web, ứng dụng desktop và tài liệu phần cứng.
-
-<p align="center">
-  <img src="docs/images/robot-prototype.png" alt="Nguyên mẫu Desk Robot với màn hình OLED, servo và phần cứng ESP32" width="360" />
-</p>
-
-<p align="center"><em>Nguyên mẫu robot: OLED phía trên hiển thị biểu cảm, khung nhiều tầng bố trí mạch điều khiển, dây kết nối và nguồn.</em></p>
-
-## Chức năng chính
-
-| Nhóm chức năng      | Mô tả                                                                             |
-| ------------------- | --------------------------------------------------------------------------------- |
-| Giám sát môi trường | Theo dõi nhiệt độ, độ ẩm, ánh sáng, áp suất và độ cao ước tính từ cảm biến        |
-| Tương tác với robot | Hiển thị biểu cảm OLED, điều khiển đầu và hai tay bằng servo, nhận thao tác chạm  |
-| Hỗ trợ tập trung    | Pomodoro với phiên học 25 phút và nghỉ 5 phút trong firmware                      |
-| Dashboard web       | Hiển thị trạng thái thiết bị, biểu đồ, nhật ký và điều khiển qua Firebase         |
-| Quản lý học tập     | Giao diện lịch học, ghi chú và tác vụ học tập                                     |
-| Trợ lý AI cục bộ    | Hỏi đáp và phân tích ngữ cảnh môi trường, tác vụ trong ứng dụng Python qua Ollama |
-| Quản trị demo       | Quản lý tài khoản, vai trò và robot được truy cập trên giao diện web              |
-
-## Giao diện dashboard
-
-![Dashboard giám sát môi trường và trạng thái Desk Robot](docs/images/dashboard.png)
-
-Dashboard tập hợp dữ liệu cảm biến, trạng thái kết nối và thông tin robot trong một màn hình. Người dùng có thể chuyển giữa không gian làm việc, điều khiển và nhật ký; các trang riêng hỗ trợ ChatBox, tự học, biểu đồ và quản trị.
-
-Khu vực **AI/MCP Phân tích** hiển thị nhận xét môi trường và chỉ số thoải mái tham khảo. Dashboard có thể tính nhận xét bằng các quy tắc cục bộ khi chưa có kết quả từ agent bên ngoài. Nhãn `dashboard_local` trong ảnh thể hiện nguồn phân tích này; chỉ số thoải mái là giá trị do phần mềm tính, không phải đại lượng đo trực tiếp từ cảm biến.
-
-_Ảnh ghi lại trạng thái tại thời điểm chụp; số liệu và trạng thái thay đổi theo dữ liệu Firebase._
-
-## Kiến trúc hệ thống
+This is an educational prototype for exploring IoT and AI integration. The repository includes firmware, a web interface, a desktop application, and hardware documentation.
 
 <p align="center">
-  <img src="docs/images/system-architecture.png" alt="Sơ đồ bốn khối: cảm biến, ESP32 và cơ cấu chấp hành, Firebase, phần mềm AI và dashboard" width="620" />
+  <img src="docs/images/robot-prototype.png" alt="Desk Robot prototype with an OLED display, servos, and ESP32 hardware" width="360" />
 </p>
 
-Hệ thống được tổ chức thành bốn khối:
+<p align="center"><em>The physical prototype uses an OLED display for expressions and a layered frame to house the controller, wiring, and power supply.</em></p>
 
-1. **Cảm biến:** AHT20 đo nhiệt độ và độ ẩm, BMP280 cung cấp áp suất để ước tính độ cao, BH1750 đo ánh sáng và TTP223 nhận thao tác chạm.
-2. **Xử lý và tương tác:** ESP32 đọc cảm biến, quản lý OLED, servo và trạng thái Pomodoro; firmware đẩy dữ liệu môi trường lên Firebase theo chu kỳ khoảng 10 giây.
-3. **Đồng bộ dữ liệu:** Firebase Realtime Database lưu thông số, trạng thái robot và yêu cầu điều khiển. Dashboard theo dõi thay đổi tại các node này để cập nhật giao diện.
-4. **Phần mềm:** dashboard web phục vụ giám sát và điều khiển; ứng dụng Python cung cấp giao diện trò chuyện, đọc ngữ cảnh từ Firebase và gọi Ollama trên máy tính.
+## Features
 
-Luồng giám sát và điều khiển trong firmware/dashboard:
+| Feature                  | Description                                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------------------------ |
+| Environmental monitoring | Track temperature, humidity, light level, pressure, and estimated altitude                       |
+| Robot interaction        | Display OLED expressions, control the head and both arms, and respond to touch input             |
+| Focus sessions           | Run 25-minute study sessions with 5-minute breaks using the firmware's Pomodoro timer            |
+| Web dashboard            | View device status, charts, activity logs, and robot controls through Firebase                   |
+| Study management         | Use the web interface to organize schedules, notes, and study tasks                              |
+| Local AI assistant       | Ask questions and analyze environmental or task context in the Python application through Ollama |
+| Demo administration      | Manage accounts, roles, and robot access through the web interface                               |
+
+## Web Dashboard
+
+![Desk Robot dashboard showing environmental readings and system status](docs/images/dashboard.png)
+
+The dashboard brings sensor readings, connection status, and robot information into a single view. Users can switch between workspace monitoring, controls, and activity logs, with separate pages for ChatBox, study tools, charts, and administration.
+
+The **AI/MCP Analysis** panel displays environmental assessments and a reference comfort score. The dashboard can calculate these assessments using local rules when results from an external agent are unavailable. The `dashboard_local` label in the screenshot identifies this source. The comfort score is calculated by the software rather than measured directly by a sensor.
+
+_The screenshot captures a single point in time; readings and status change with the data stored in Firebase._
+
+## System Architecture
+
+<p align="center">
+  <img src="docs/images/system-architecture.png" alt="System architecture with sensors, ESP32 and actuators, Firebase, and the AI application and web dashboard" width="620" />
+</p>
+
+The system consists of four main blocks:
+
+1. **Sensors:** the AHT20 measures temperature and humidity, the BMP280 measures pressure for altitude estimation, the BH1750 measures light level, and the TTP223 detects touch input.
+2. **Processing and interaction:** the ESP32 reads sensors and manages the OLED, servos, and Pomodoro state. The firmware uploads environmental readings to Firebase approximately every 10 seconds.
+3. **Data synchronization:** Firebase Realtime Database stores readings, robot state, and control requests. The dashboard subscribes to changes in these nodes to update its interface.
+4. **Applications:** the web dashboard provides monitoring and controls. The Python application offers a chat interface, reads context from Firebase, and calls Ollama on the computer.
+
+The firmware and dashboard use the following monitoring and control flows:
 
 ```text
-Cảm biến → ESP32 → Firebase → Dashboard
-Dashboard → Firebase/CommandRequest → ESP32 → OLED và servo
+Sensors → ESP32 → Firebase → Dashboard
+Dashboard → Firebase/CommandRequest → ESP32 → OLED and servos
 ESP32 → Firebase/CommandAck → Dashboard
 ```
 
-Sơ đồ kiến trúc thể hiện hướng tích hợp tổng thể. Ứng dụng Python hiện hoạt động qua giao diện desktop; việc nối luồng ChatBox từ web đến Python cần bổ sung agent xử lý yêu cầu. Chi tiết nằm ở phần [Trạng thái tích hợp](#trạng-thái-tích-hợp).
+The architecture diagram represents the overall integration design. The Python application currently runs through its desktop interface; connecting web ChatBox requests to Python requires an additional request-processing agent. See [Integration Status](#integration-status) for the current implementation scope.
 
-### Tổ chức dữ liệu
+### Data Layout
 
-Firmware và dashboard sử dụng cấu trúc theo từng robot:
+The firmware and dashboard organize data by robot:
 
 ```text
 RobotDashboard/
@@ -77,70 +77,70 @@ RobotDashboard/
             └── EnvironmentAnalysis/
 ```
 
-`CommandRequest` và `CommandAck` mang mã yêu cầu cùng các mốc thời gian để theo dõi việc nhận, thực thi lệnh và đo độ trễ. `ROBOT_ID` trong firmware phải trùng với robot được chọn và cấp quyền trên dashboard.
+`CommandRequest` and `CommandAck` contain request identifiers and timestamps for tracking command receipt, execution, and latency. The firmware's `ROBOT_ID` must match the robot selected and authorized in the dashboard.
 
-## Thiết kế phần cứng
+## Hardware
 
-### Linh kiện chính
+### Main Components
 
-| Linh kiện                          | Vai trò                                                     |
-| ---------------------------------- | ----------------------------------------------------------- |
-| ESP32                              | Bộ điều khiển trung tâm và kết nối Wi-Fi                    |
-| OLED SSD1306, 128 × 64             | Hiển thị biểu cảm, thông số môi trường, đồng hồ và Pomodoro |
-| AHT20 và BMP280                    | Đo nhiệt độ, độ ẩm và áp suất                               |
-| BH1750                             | Đo độ rọi của môi trường                                    |
-| TTP223                             | Nhận thao tác chạm và giữ                                   |
-| 3 servo                            | Điều khiển đầu, tay trái và tay phải                        |
-| Nguồn, công tắc và bộ hạ áp LM2596 | Khối cấp nguồn theo sơ đồ đấu nối                           |
+| Component                                       | Purpose                                                          |
+| ----------------------------------------------- | ---------------------------------------------------------------- |
+| ESP32                                           | Central controller and Wi-Fi connectivity                        |
+| SSD1306 OLED, 128 × 64                          | Expressions, environmental readings, clock, and Pomodoro display |
+| AHT20 and BMP280                                | Temperature, humidity, and pressure measurements                 |
+| BH1750                                          | Ambient light measurement                                        |
+| TTP223                                          | Touch and hold input                                             |
+| Three servos                                    | Head, left arm, and right arm movement                           |
+| Power supply, switch, and LM2596 buck converter | Power delivery as shown in the wiring diagram                    |
 
-### Sơ đồ nguyên lý
+### Circuit Schematic
 
-![Sơ đồ nguyên lý gồm ESP32, OLED, cảm biến, ba servo và khối nguồn](docs/images/circuit-schematic.png)
+![Circuit schematic showing the ESP32, OLED, sensors, three servos, and power supply](docs/images/circuit-schematic.png)
 
-Sơ đồ phân tách các khối xử lý, hiển thị, cảm biến, cơ cấu chấp hành và nguồn. OLED cùng các cảm biến môi trường dùng bus I2C; servo và cảm biến chạm có chân tín hiệu riêng.
+The schematic separates the processing, display, sensing, actuator, and power blocks. The OLED and environmental sensors share the I2C bus; the servos and touch sensor use dedicated signal pins.
 
-### Sơ đồ đấu nối
+### Wiring Diagram
 
-![Sơ đồ đấu nối ESP32 với OLED, cảm biến chạm, cảm biến môi trường, ba servo và nguồn](docs/images/wiring-diagram.png)
+![Wiring diagram connecting the ESP32 to the OLED, touch sensor, environmental sensors, three servos, and power supply](docs/images/wiring-diagram.png)
 
-Sơ đồ đấu nối minh họa vị trí các module và đường kết nối giữa chúng. Bảng dưới ghi các chân đang được khai báo trong firmware để đối chiếu khi lắp ráp hoặc thay đổi phần cứng.
+The wiring diagram illustrates the modules and their connections. The table below lists the pins currently declared in the firmware for reference during assembly or hardware changes.
 
-| Tín hiệu             | GPIO trong firmware |
-| -------------------- | ------------------- |
-| I2C SDA              | 21                  |
-| I2C SCL              | 22                  |
-| Cảm biến chạm TTP223 | 4                   |
-| Servo đầu            | 18                  |
-| Servo tay trái       | 16                  |
-| Servo tay phải       | 17                  |
-| Buzzer               | 27                  |
-| LED trạng thái       | 2                   |
+| Signal              | Firmware GPIO |
+| ------------------- | ------------- |
+| I2C SDA             | 21            |
+| I2C SCL             | 22            |
+| TTP223 touch sensor | 4             |
+| Head servo          | 18            |
+| Left arm servo      | 16            |
+| Right arm servo     | 17            |
+| Buzzer              | 27            |
+| Status LED          | 2             |
 
-Buzzer và LED là các đầu ra bổ sung được firmware sử dụng. Các hình phần cứng là tài liệu minh họa; khi thay đổi cách đấu nối, cập nhật các hằng số GPIO tương ứng trong sketch.
+The buzzer and LED are additional outputs used by the firmware. The hardware images are reference diagrams; update the corresponding GPIO constants in the sketch when changing the wiring.
 
-## Thành phần trong repository
+## Repository Structure
 
-| File hoặc thư mục        | Chức năng                                                                  |
-| ------------------------ | -------------------------------------------------------------------------- |
-| `robot_cua_tan_phat.ino` | Firmware ESP32: cảm biến, OLED, servo, Pomodoro và Firebase                |
-| `AI_local.PY`            | Ứng dụng Tkinter: trò chuyện, đọc ngữ cảnh, quản lý tác vụ và gửi lệnh UDP |
-| `settings.py`            | Đọc cấu hình Python từ biến môi trường hoặc `.env`                         |
-| `index.html`             | Dashboard giám sát, điều khiển và quản lý học tập                          |
-| `login.html`             | Giao diện đăng ký, đăng nhập và OTP EmailJS cho bản demo                   |
-| `emailjs-test.html`      | Kiểm tra cấu hình gửi email                                                |
-| `assets/` và `images/`   | Tài nguyên giao diện web                                                   |
-| `docs/images/`           | Ảnh sản phẩm, dashboard, kiến trúc và sơ đồ phần cứng trong README         |
-| `database.rules.json`    | Firebase Rules của bản demo                                                |
+| File or directory        | Purpose                                                                            |
+| ------------------------ | ---------------------------------------------------------------------------------- |
+| `robot_cua_tan_phat.ino` | ESP32 firmware for sensors, OLED, servos, Pomodoro, and Firebase                   |
+| `AI_local.PY`            | Tkinter application for chat, context retrieval, task management, and UDP commands |
+| `settings.py`            | Python configuration loaded from environment variables or `.env`                   |
+| `index.html`             | Monitoring, control, and study management dashboard                                |
+| `login.html`             | Demo registration, login, and EmailJS OTP interface                                |
+| `emailjs-test.html`      | Email delivery configuration checks                                                |
+| `assets/` and `images/`  | Web interface resources                                                            |
+| `docs/images/`           | Product, dashboard, architecture, and hardware images used in this README          |
+| `database.rules.json`    | Firebase Security Rules for the demo                                               |
 
-## Cấu hình
+## Configuration
 
-| File riêng trên máy | File mẫu được commit | Nội dung                          |
-| ------------------- | -------------------- | --------------------------------- |
-| `.env`              | `.env.example`       | Địa chỉ ESP32, Firebase và Ollama |
-| `config.local.js`   | `config.example.js`  | Firebase Web và EmailJS           |
-| `secrets.h`         | `secrets.example.h`  | Wi-Fi và Firebase cho ESP32       |
+| Local configuration file | Committed example   | Contents                                         |
+| ------------------------ | ------------------- | ------------------------------------------------ |
+| `.env`                   | `.env.example`      | ESP32 address, Firebase URL, and Ollama settings |
+| `config.local.js`        | `config.example.js` | Firebase Web and EmailJS configuration           |
+| `secrets.h`              | `secrets.example.h` | Wi-Fi and Firebase configuration for the ESP32   |
 
-Khi clone trên máy mới, tạo cấu hình bằng PowerShell:
+After cloning the repository on a new computer, create the configuration files using PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
@@ -148,15 +148,15 @@ Copy-Item config.example.js config.local.js
 Copy-Item secrets.example.h secrets.h
 ```
 
-Điền thông tin của bạn vào ba file vừa tạo. Nếu chúng đã tồn tại, hãy sửa trực tiếp để giữ cấu hình hiện tại. Biến môi trường của hệ điều hành được ưu tiên hơn `.env`.
+Fill in the three files with your connection details. If they already exist, edit them directly to preserve your current configuration. Operating-system environment variables take precedence over values in `.env`.
 
-`ROBOT_ID` trong firmware phải trùng với robot được cấp quyền trên dashboard. `DATABASE_URL` trong `secrets.h` cần có dấu `/` ở cuối.
+The firmware's `ROBOT_ID` must match a robot authorized in the dashboard. `DATABASE_URL` in `secrets.h` must end with `/`.
 
-## Chạy Python
+## Running the Python App
 
-Yêu cầu Python 3.10 trở lên có Tkinter và Ollama đang hoạt động.
+Requirements: Python 3.10 or later with Tkinter, and Ollama running locally.
 
-Model mặc định trong file mẫu là `qwen2.5:3b`. Suy luận AI chạy trên máy tính; Firebase và EmailJS vẫn sử dụng kết nối mạng.
+The example configuration uses `qwen2.5:3b`. AI inference runs on the computer; Firebase and EmailJS still require network access.
 
 ```powershell
 python -m venv .venv
@@ -166,59 +166,59 @@ ollama pull qwen2.5:3b
 ollama serve
 ```
 
-Mở terminal khác, kích hoạt môi trường ảo và chạy:
+In another terminal, activate the virtual environment and launch the application:
 
 ```powershell
 python AI_local.PY
 ```
 
-Đổi `OLLAMA_MODEL` trong `.env` nếu dùng model khác. Kiểm tra kết nối mạng, `ESP32_IP` và `ESP32_PORT` trước khi điều khiển robot.
+Set `OLLAMA_MODEL` in `.env` to use a different model. Check network connectivity, `ESP32_IP`, and `ESP32_PORT` before sending robot commands.
 
-## Chạy dashboard
+## Running the Dashboard
 
-Sau khi điền `config.local.js`, chạy máy chủ web cục bộ:
+After completing `config.local.js`, start a local web server:
 
 ```powershell
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Mở `http://127.0.0.1:8000/login.html`. Dùng `emailjs-test.html` để kiểm tra cấu hình EmailJS. Tên tham số OTP phải khớp với template của bạn.
+Open `http://127.0.0.1:8000/login.html`. Use `emailjs-test.html` to check your EmailJS configuration. The OTP parameter names must match your email template.
 
-Khi triển khai website, cung cấp cấu hình web qua bước triển khai riêng. Không đưa `.env` hoặc `secrets.h` vào thư mục web công khai.
+When deploying the website, provide its web configuration through a separate deployment step. Keep `.env` and `secrets.h` out of publicly served directories.
 
-## Nạp firmware
+## Flashing the Firmware
 
-Mở sketch bằng Arduino IDE với board ESP32, đặt `secrets.h` cạnh file `.ino` và cài các thư viện:
+Open the sketch in Arduino IDE with an ESP32 board selected, place `secrets.h` beside the `.ino` file, and install these libraries:
 
-- Adafruit GFX, Adafruit SSD1306, Adafruit AHTX0 và Adafruit BMP280
+- Adafruit GFX, Adafruit SSD1306, Adafruit AHTX0, and Adafruit BMP280
 - BH1750
 - ESP32Servo
 - Firebase ESP Client
 
-Kiểm tra các chân GPIO trước khi nạp; lấy IP của ESP32 từ Serial Monitor.
+Check the GPIO assignments before flashing. Read the ESP32's IP address from the Serial Monitor.
 
-## Trạng thái tích hợp
+## Integration Status
 
-Các thành phần hiện chưa dùng cùng một hợp đồng dữ liệu và kênh điều khiển:
+The components currently use different data layouts and control channels:
 
-- **Firmware và dashboard:** dùng các node tại `RobotDashboard/Robots/<robotId>`; firmware nhận yêu cầu điều khiển qua Firebase.
-- **Python desktop:** mặc định đọc các node cũ như `ThongSo`, `Task` và `ChatBox` tại gốc database. Cần thống nhất đường dẫn khi dùng chung dữ liệu với dashboard.
-- **ChatBox trên web:** ghi câu hỏi lên Firebase; `AI_local.PY` chưa có vòng lặp nhận và xử lý các yêu cầu này tự động.
-- **Kênh UDP:** Python có chức năng gửi lệnh UDP, nhưng sketch đi kèm chưa có bộ nhận UDP tương ứng.
-- **AI/MCP:** dashboard đọc kết quả phân tích nếu có và hỗ trợ tính nhận xét cục bộ; repository chưa kèm một MCP server hoặc agent xử lý nền cho luồng này.
+- **Firmware and dashboard:** use nodes under `RobotDashboard/Robots/<robotId>`. The firmware receives control requests through Firebase.
+- **Python desktop app:** reads legacy nodes such as `ThongSo`, `Task`, and `ChatBox` at the database root by default. Align these paths when sharing data with the dashboard.
+- **Web ChatBox:** writes questions to Firebase. `AI_local.PY` does not yet include a background loop that receives and processes these requests automatically.
+- **UDP commands:** the Python app can send UDP commands, but the included firmware does not yet implement a corresponding UDP receiver.
+- **AI/MCP:** the dashboard reads analysis results when available and supports local assessments. The repository does not include an MCP server or a background processing agent for this flow.
 
-Các điểm trên là phạm vi tích hợp còn cần hoàn thiện khi triển khai toàn bộ hệ thống.
+These integration tasks remain to be completed when connecting all components into a single system.
 
-## Định dạng code
+## Code Formatting
 
-Cài công cụ Python và Prettier; Prettier cần Node.js 18 trở lên:
+Install the Python formatting tools and Prettier. Prettier requires Node.js 18 or later:
 
 ```powershell
 python -m pip install -r requirements-dev.txt
 npm ci
 ```
 
-Định dạng và kiểm tra:
+Format and check the source:
 
 ```powershell
 python -m black AI_local.PY settings.py
@@ -228,5 +228,4 @@ python -m black --check AI_local.PY settings.py
 npm run format:check
 ```
 
-Quy tắc nằm trong `pyproject.toml`, `.prettierrc.json`, `.clang-format` và `.editorconfig`.
-
+Formatting rules are defined in `pyproject.toml`, `.prettierrc.json`, `.clang-format`, and `.editorconfig`.
