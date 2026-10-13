@@ -1,0 +1,4 @@
+-r requirements.txt
+black>=24,<27
+clang-format>=18,<23
+

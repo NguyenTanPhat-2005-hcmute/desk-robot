@@ -58,8 +58,7 @@
         position: relative;
         min-height: 100vh;
         overflow: hidden;
-        background: url("images/school-bg.png") center center / 120% 120%
-          no-repeat;
+        background: url("images/school-bg.png") center center / 120% 120% no-repeat;
         background-color: #eeeeee;
       }
 
@@ -448,32 +447,20 @@
 
       <section class="auth-panel">
         <div class="school-header">
-          <img
-            class="school-logo"
-            src="assets/logo-ute.png"
-            alt="Logo HCMUTE"
-          />
-          <h1 class="school-name">
-            Đại học Công nghệ Kỹ thuật TP. Hồ Chí Minh
-          </h1>
+          <img class="school-logo" src="assets/logo-ute.png" alt="Logo HCMUTE" />
+          <h1 class="school-name">Đại học Công nghệ Kỹ thuật TP. Hồ Chí Minh</h1>
           <div class="portal-title">Cổng đăng nhập Robot-Dashboard</div>
         </div>
 
         <div class="auth-card">
           <div class="tabs">
-            <button class="tab active" type="button" data-tab="login">
-              Đăng nhập
-            </button>
-            <button class="tab" type="button" data-tab="register">
-              Đăng ký
-            </button>
+            <button class="tab active" type="button" data-tab="login">Đăng nhập</button>
+            <button class="tab" type="button" data-tab="register">Đăng ký</button>
           </div>
 
           <form id="loginForm" class="form active" autocomplete="off">
             <h2>Đăng nhập</h2>
-            <p class="sub">
-              Đăng nhập tài khoản để truy cập hệ thống Desk Robot IoT.
-            </p>
+            <p class="sub">Đăng nhập tài khoản để truy cập hệ thống Desk Robot IoT.</p>
 
             <label>Email</label>
             <input
@@ -491,9 +478,7 @@
               required
             />
 
-            <button id="loginBtn" class="btn" type="submit">
-              Gửi OTP đăng nhập
-            </button>
+            <button id="loginBtn" class="btn" type="submit">Gửi OTP đăng nhập</button>
 
             <div class="mini-actions">
               <button id="clearSessionBtn" class="btn light" type="button">
@@ -505,8 +490,7 @@
             </div>
 
             <p class="helper">
-              Hệ thống sử dụng Firebase Realtime Database và xác minh OTP qua
-              EmailJS.
+              Hệ thống sử dụng Firebase Realtime Database và xác minh OTP qua EmailJS.
             </p>
           </form>
 
@@ -548,9 +532,7 @@
               required
             />
 
-            <button id="registerBtn" class="btn" type="submit">
-              Gửi OTP đăng ký
-            </button>
+            <button id="registerBtn" class="btn" type="submit">Gửi OTP đăng ký</button>
           </form>
 
           <div id="status" class="status"></div>
@@ -581,46 +563,32 @@
           <input maxlength="1" inputmode="numeric" />
           <input maxlength="1" inputmode="numeric" />
         </div>
-        <button id="verifyOtpBtn" class="btn" type="button">
-          Xác nhận OTP
-        </button>
-        <button id="resendOtpBtn" class="btn light" type="button">
-          Gửi lại OTP
-        </button>
+        <button id="verifyOtpBtn" class="btn" type="button">Xác nhận OTP</button>
+        <button id="resendOtpBtn" class="btn light" type="button">Gửi lại OTP</button>
         <div id="otpTimer" class="timer">05:00</div>
         <div class="danger-note">Bản quyền thiết kế đồ án IoT.</div>
       </div>
     </section>
 
+    <script src="config.local.js"></script>
+    <script src="assets/config.js"></script>
     <script>
       "use strict";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyA1RX1Iwr5oxuQoqnllYc7qd1InKqsZ1b0",
-        authDomain: "robot-e9176.firebaseapp.com",
-        databaseURL:
-          "https://robot-e9176-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "robot-e9176",
-        storageBucket: "robot-e9176.firebasestorage.app",
-        messagingSenderId: "609437516347",
-        appId: "1:609437516347:web:76948ab97cabbd9413921e",
-        measurementId: "G-Z47HZ26C8B",
-      };
+      const firebaseConfig = window.getRobotConfig("firebase");
 
       firebase.initializeApp(firebaseConfig);
       const db = firebase.database();
 
-      const EMAILJS_SERVICE_ID = "service_838817g";
-      // Nếu EmailJS báo service ID not found dù ID đúng, dùng default_service để EmailJS tự lấy Gmail service mặc định.
-      const EMAILJS_DEFAULT_SERVICE_ID = "default_service";
-      const EMAILJS_TEMPLATE_ID = "template_wb9sbcl";
-      const EMAILJS_PUBLIC_KEY = "KuiCEO4oRmFlwzxxE";
-      // Dùng EmailJS Browser SDK v3 cho giống đoạn Javascript Code trong nút Test It của EmailJS.
-      // Không dùng Private Key trong web.
+      const emailjsConfig = window.getRobotConfig("emailjs");
+      const EMAILJS_SERVICE_ID = emailjsConfig.serviceId;
+      // Fallback sang service mặc định nếu service chính không hoạt động.
+      const EMAILJS_DEFAULT_SERVICE_ID =
+        emailjsConfig.defaultServiceId || "default_service";
+      const EMAILJS_TEMPLATE_ID = emailjsConfig.templateId;
+      const EMAILJS_PUBLIC_KEY = emailjsConfig.publicKey;
       emailjs.init(EMAILJS_PUBLIC_KEY);
 
-      // Nếu EmailJS bị lỗi do sai service/template/public key hoặc mạng chặn,
-      // bật tạm OTP demo để vẫn test được luồng đăng nhập. Khi thuyết trình thật nên để false.
       const ALLOW_DEMO_OTP_WHEN_EMAILJS_FAIL = false;
 
       const SESSION_KEY = "robot_dashboard_session";
@@ -739,8 +707,7 @@
           if (inp.value && arr[idx + 1]) arr[idx + 1].focus();
         });
         inp.addEventListener("keydown", (e) => {
-          if (e.key === "Backspace" && !inp.value && arr[idx - 1])
-            arr[idx - 1].focus();
+          if (e.key === "Backspace" && !inp.value && arr[idx - 1]) arr[idx - 1].focus();
         });
       });
 
@@ -751,9 +718,7 @@
       }
 
       function clearOtp() {
-        document
-          .querySelectorAll("#otpInputs input")
-          .forEach((i) => (i.value = ""));
+        document.querySelectorAll("#otpInputs input").forEach((i) => (i.value = ""));
         const first = document.querySelector("#otpInputs input");
         if (first) first.focus();
       }
@@ -779,23 +744,12 @@
       function startTimer() {
         if (timerId) clearInterval(timerId);
         timerId = setInterval(() => {
-          const left = Math.max(
-            0,
-            Math.floor((otpExpireAt - Date.now()) / 1000),
-          );
+          const left = Math.max(0, Math.floor((otpExpireAt - Date.now()) / 1000));
           const mm = String(Math.floor(left / 60)).padStart(2, "0");
           const ss = String(left % 60).padStart(2, "0");
           $("otpTimer").textContent =
             left > 0 ? `OTP hết hạn sau ${mm}:${ss}` : "OTP đã hết hạn";
         }, 500);
-      }
-
-      function showEmailJsConfigNote() {
-        console.log("EmailJS config đang dùng:", {
-          service: EMAILJS_SERVICE_ID,
-          template: EMAILJS_TEMPLATE_ID,
-          publicKey: EMAILJS_PUBLIC_KEY,
-        });
       }
 
       function getEmailJSError(err) {
@@ -812,13 +766,12 @@
       }
 
       async function sendOtpEmail(email, name) {
-        showEmailJsConfigNote();
         currentOtp = makeOtp();
         otpExpireAt = Date.now() + 5 * 60 * 1000;
 
         const displayName = name || email.split("@")[0] || email;
         const params = {
-          // Đúng với template EmailJS của m: To Email = {{to_email}}, From Name = {{to_name}}, Reply To = {{email}}, mã = {{otp_code}}
+          // Tên tham số phải khớp với template EmailJS.
           to_email: email,
           to_name: displayName,
           email: email,
@@ -833,18 +786,13 @@
 
         let lastDetail = "";
 
-        // Cách 1: gọi đúng như Javascript Code trong EmailJS Test It.
+        // Gửi OTP qua SDK.
         try {
           if (typeof emailjs === "undefined") {
             throw new Error(
               "Không tải được thư viện EmailJS. Kiểm tra mạng Internet hoặc link CDN EmailJS.",
             );
           }
-          console.log(
-            "Đang gửi EmailJS bằng SDK v3:",
-            EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-          );
           const result = await emailjs.send(
             EMAILJS_SERVICE_ID,
             EMAILJS_TEMPLATE_ID,
@@ -857,10 +805,10 @@
           console.warn("SDK EmailJS lỗi, chuyển sang REST API:", lastDetail);
         }
 
-        // Cách 2: gửi trực tiếp bằng REST API của EmailJS, tránh lỗi lệch phiên bản SDK.
+        // Fallback sang REST API.
         try {
           const res = await fetch(
-            "https://api.emailjs.com/api/v1.0/email/send",
+            emailjsConfig.apiUrl || "https://api.emailjs.com/api/v1.0/email/send",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -881,7 +829,7 @@
           console.warn("REST EmailJS lỗi:", lastDetail);
         }
 
-        // Cách 3: nếu service default có được bật trong EmailJS thì thử thêm một lần.
+        // Thử service mặc định khi cả SDK và REST đều lỗi.
         try {
           console.log("Đang gửi EmailJS bằng default_service");
           const result = await emailjs.send(
@@ -903,9 +851,7 @@
           );
           return { demo: true };
         }
-        throw new Error(
-          "Không gửi được OTP qua EmailJS. Lỗi cuối: " + lastDetail,
-        );
+        throw new Error("Không gửi được OTP qua EmailJS. Lỗi cuối: " + lastDetail);
       }
 
       function firebasePermissionMessage(actionText) {
@@ -979,7 +925,7 @@
           status: "ACTIVE",
         };
 
-        // Ghi tài khoản vào 2 nhánh. Chỉ cần 1 nhánh ghi được là tài khoản đã lưu.
+        // Giữ tương thích với hai nhánh tài khoản.
         const writes = await Promise.allSettled([
           db.ref("RobotDashboard/TaiKhoan/" + key).set(data),
           db.ref("TaiKhoan/" + key).set(data),
@@ -991,7 +937,7 @@
           throw new Error(firebasePermissionMessage("ghi tài khoản đăng ký"));
         }
 
-        // Nhánh DanhSachEmail chỉ là phụ, lỗi quyền ở nhánh này không được làm hỏng đăng ký.
+        // Lỗi ghi danh sách email không chặn đăng ký.
         try {
           await db.ref("DanhSachEmail/" + safeEmailKey(account.email)).set({
             email: normalizeEmail(account.email),
@@ -1009,8 +955,7 @@
         e.preventDefault();
         const email = normalizeEmail($("loginEmail").value);
         const password = $("loginPassword").value;
-        if (!email || !password)
-          return setStatus("Nhập đủ email và mật khẩu.", "err");
+        if (!email || !password) return setStatus("Nhập đủ email và mật khẩu.", "err");
 
         try {
           setLoading("loginBtn", true, "Đang kiểm tra tài khoản...");
@@ -1020,8 +965,7 @@
             throw new Error(
               "Tài khoản chưa tồn tại. Chuyển qua Đăng ký để tạo tài khoản.",
             );
-          const savedPass =
-            acc.password || acc.matKhau || acc.MatKhau || acc.pass;
+          const savedPass = acc.password || acc.matKhau || acc.MatKhau || acc.pass;
           if (String(savedPass || "") !== String(password))
             throw new Error("Mật khẩu không đúng.");
 
@@ -1040,10 +984,7 @@
                   acc.ActiveRobotId ||
                   Object.keys(
                     normalizeRobotIds(
-                      acc.robotIds ||
-                        acc.RobotIds ||
-                        acc.robotId ||
-                        acc.RobotId,
+                      acc.robotIds || acc.RobotIds || acc.robotId || acc.RobotId,
                     ),
                   )[0],
               ),
@@ -1068,16 +1009,12 @@
         const robotId = safeRobotId($("regRobotId").value);
         const password = $("regPassword").value;
         if (!name || !email || !robotId || !password)
-          return setStatus(
-            "Nhập đủ họ tên, email, Robot ID và mật khẩu.",
-            "err",
-          );
+          return setStatus("Nhập đủ họ tên, email, Robot ID và mật khẩu.", "err");
 
         try {
           setLoading("registerBtn", true, "Đang gửi OTP...");
           const existed = await findAccountByEmail(email);
-          if (existed)
-            throw new Error("Email này đã có tài khoản. Hãy đăng nhập.");
+          if (existed) throw new Error("Email này đã có tài khoản. Hãy đăng nhập.");
 
           pendingAction = {
             type: "register",
@@ -1127,7 +1064,7 @@
             }),
           );
 
-          // Ghi nhật ký đăng nhập là phụ. Nếu Firebase Rules chưa cho ghi nhánh này thì vẫn cho vào dashboard.
+          // Lỗi ghi nhật ký không chặn đăng nhập.
           try {
             await db.ref("RobotDashboard/NhatKyDangNhap").push({
               email: account.email,
@@ -1149,14 +1086,10 @@
       });
 
       $("resendOtpBtn").addEventListener("click", async () => {
-        if (!pendingAction)
-          return setStatus("Chưa có email để gửi lại.", "err");
+        if (!pendingAction) return setStatus("Chưa có email để gửi lại.", "err");
         try {
           setLoading("resendOtpBtn", true, "Đang gửi lại...");
-          await sendOtpEmail(
-            pendingAction.account.email,
-            pendingAction.account.name,
-          );
+          await sendOtpEmail(pendingAction.account.email, pendingAction.account.name);
           openOtpModal(pendingAction.account.email);
           setStatus("Đã gửi lại OTP.", "ok");
         } catch (err) {
@@ -1180,13 +1113,10 @@
         try {
           setStatus("Đang tạo dữ liệu demo robot trên Firebase...");
           const updates = {
-            "RobotDashboard/Robots/desk_robot_01/RobotInfo/robotId":
-              "desk_robot_01",
-            "RobotDashboard/Robots/desk_robot_01/RobotInfo/tenRobot":
-              "DeskRobot_ESP32",
+            "RobotDashboard/Robots/desk_robot_01/RobotInfo/robotId": "desk_robot_01",
+            "RobotDashboard/Robots/desk_robot_01/RobotInfo/tenRobot": "DeskRobot_ESP32",
             "RobotDashboard/Robots/desk_robot_01/RobotInfo/trangThai": "ACTIVE",
-            "RobotDashboard/Robots/desk_robot_01/ThietBi/TenThietBi":
-              "DeskRobot_ESP32",
+            "RobotDashboard/Robots/desk_robot_01/ThietBi/TenThietBi": "DeskRobot_ESP32",
             "RobotDashboard/Robots/desk_robot_01/ThietBi/TrangThai": "ONLINE",
             "RobotDashboard/Robots/desk_robot_01/ThietBi/CheDo": "IDLE",
             "RobotDashboard/Robots/desk_robot_01/ThietBi/CamXuc": "BUON",
@@ -1203,10 +1133,10 @@
             "RobotDashboard/Robots/desk_robot_01/ThongSo/DoCao": 50.2,
             "RobotDashboard/Robots/desk_robot_01/ThongSo/Pin": 80,
             "RobotDashboard/Robots/desk_robot_01/ThongSo/AmThanh": 0,
-            "RobotDashboard/Robots/desk_robot_01/ThongSo/ThoiGianCapNhat":
-              String(Date.now()),
-            "RobotDashboard/Robots/desk_robot_01/Dashboard/CheDoDieuKhien":
-              "FIREBASE",
+            "RobotDashboard/Robots/desk_robot_01/ThongSo/ThoiGianCapNhat": String(
+              Date.now(),
+            ),
+            "RobotDashboard/Robots/desk_robot_01/Dashboard/CheDoDieuKhien": "FIREBASE",
             "RobotDashboard/Robots/desk_robot_01/Dashboard/CanhBao": false,
             "RobotDashboard/Robots/desk_robot_01/Dashboard/ThongBao": "",
             "RobotDashboard/Robots/desk_robot_01/ChatBox/CauHoiCuoi":

@@ -1,0 +1,13 @@
+{
+  "name": "desk-robot-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ESP32 desk robot dashboard with a local Ollama assistant",
+  "scripts": {
+    "format": "prettier --write \"*.html\" \"assets/*.js\" config.example.js \"*.json\" README.md",
+    "format:check": "prettier --check \"*.html\" \"assets/*.js\" config.example.js \"*.json\" README.md"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}

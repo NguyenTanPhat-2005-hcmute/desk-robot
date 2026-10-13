@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Robot-Dashboard | Dashboard hoàn chỉnh</title>
 
+    <script src="config.local.js"></script>
+    <script src="assets/config.js"></script>
     <script>
       const SESSION_KEY = "robot_dashboard_session";
       if (!localStorage.getItem(SESSION_KEY)) {
@@ -50,8 +52,7 @@
       }
       body {
         margin: 0;
-        font-family:
-          "Be Vietnam Pro", "Inter", "Segoe UI", "Roboto", Arial, sans-serif;
+        font-family: "Be Vietnam Pro", "Inter", "Segoe UI", "Roboto", Arial, sans-serif;
         background-color: var(--bg-main);
         color: var(--text-main);
         overflow-x: hidden;
@@ -87,7 +88,7 @@
         gap: 0;
       }
 
-      /* Sidebar tối giản & nhẹ hơn */
+      /* Sidebar */
       .sidebar {
         position: sticky;
         top: 0;
@@ -352,12 +353,7 @@
         grid-template-columns: 1.3fr 0.7fr;
         gap: 20px;
         align-items: center;
-        background: linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #f4f8fc 65%,
-          #eaf3ff 100%
-        );
+        background: linear-gradient(135deg, #ffffff 0%, #f4f8fc 65%, #eaf3ff 100%);
         padding: 24px;
       }
       .hero-card img {
@@ -1215,25 +1211,12 @@
       }
       body {
         background:
-          radial-gradient(
-            circle at 18% 0%,
-            rgba(194, 226, 255, 0.55),
-            transparent 32%
-          ),
-          radial-gradient(
-            circle at 92% 10%,
-            rgba(225, 242, 255, 0.8),
-            transparent 30%
-          ),
+          radial-gradient(circle at 18% 0%, rgba(194, 226, 255, 0.55), transparent 32%),
+          radial-gradient(circle at 92% 10%, rgba(225, 242, 255, 0.8), transparent 30%),
           linear-gradient(180deg, #f8fcff 0%, #f3f9ff 100%);
       }
       .sidebar {
-        background: linear-gradient(
-          180deg,
-          #eaf5ff 0%,
-          #d9eeff 48%,
-          #cfe8ff 100%
-        );
+        background: linear-gradient(180deg, #eaf5ff 0%, #d9eeff 48%, #cfe8ff 100%);
         color: var(--text-main);
         border-right: 1px solid rgba(74, 144, 226, 0.12);
         box-shadow: 10px 0 36px rgba(74, 144, 226, 0.08);
@@ -1290,12 +1273,7 @@
         box-shadow: var(--shadow-soft);
       }
       .hero-card {
-        background: linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #f4fbff 55%,
-          #e6f4ff 100%
-        );
+        background: linear-gradient(135deg, #ffffff 0%, #f4fbff 55%, #e6f4ff 100%);
       }
       .pill {
         background: #eaf5ff;
@@ -1324,12 +1302,7 @@
         align-items: stretch;
         padding: 0;
         overflow: hidden;
-        background: linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #f5fbff 48%,
-          #e5f4ff 100%
-        );
+        background: linear-gradient(135deg, #ffffff 0%, #f5fbff 48%, #e5f4ff 100%);
       }
       .weather-main {
         padding: 26px;
@@ -1673,12 +1646,7 @@
         gap: 18px;
         align-items: center;
         padding: 22px;
-        background: linear-gradient(
-          135deg,
-          #ffffff 0%,
-          #f6fcff 62%,
-          #eaf6ff 100%
-        );
+        background: linear-gradient(135deg, #ffffff 0%, #f6fcff 62%, #eaf6ff 100%);
       }
       .workspace-icon-wrap {
         width: 82px;
@@ -2488,13 +2456,9 @@
         }
       }
 
-      /* ===== Final refinement: simple icons, readable robot selector, compact study/charts ===== */
+      /* Robot selector and charts */
       .sidebar {
-        background: linear-gradient(
-          180deg,
-          #eaf6ff 0%,
-          #d8ecff 100%
-        ) !important;
+        background: linear-gradient(180deg, #eaf6ff 0%, #d8ecff 100%) !important;
         color: #123e6d !important;
         border-right: 1px solid rgba(59, 130, 214, 0.18) !important;
         box-shadow: 8px 0 24px rgba(59, 130, 214, 0.06);
@@ -2746,7 +2710,7 @@
         }
       }
 
-      /* ===== TSX-style final UI refinement requested by user ===== */
+      /* Dashboard layout */
       .sidebar {
         background: #ffffff !important;
         color: #26364b !important;
@@ -3100,16 +3064,8 @@
         inset: 0;
         pointer-events: none;
         background:
-          radial-gradient(
-            circle at 12% 4%,
-            rgba(255, 255, 255, 0.78),
-            transparent 28%
-          ),
-          radial-gradient(
-            circle at 88% 10%,
-            rgba(219, 239, 255, 0.72),
-            transparent 26%
-          );
+          radial-gradient(circle at 12% 4%, rgba(255, 255, 255, 0.78), transparent 28%),
+          radial-gradient(circle at 88% 10%, rgba(219, 239, 255, 0.72), transparent 26%);
         z-index: 0;
       }
       #gioithieu .intro-inner {
@@ -3651,11 +3607,7 @@
             rgba(255, 255, 255, 0.34),
             transparent 30%
           ),
-          radial-gradient(
-            circle at 85% 6%,
-            rgba(224, 244, 255, 0.28),
-            transparent 28%
-          ) !important;
+          radial-gradient(circle at 85% 6%, rgba(224, 244, 255, 0.28), transparent 28%) !important;
       }
       #gioithieu .intro-inner {
         padding: 0 !important;
@@ -4004,7 +3956,7 @@
           aspect-ratio: 4 / 3 !important;
         }
       }
-      /* Bỏ nền kính mờ của thẻ hero, để chữ nằm trực tiếp trên ảnh */
+      /* Hero text overlay */
       #gioithieu .intro-hero-card.intro-glass {
         background: transparent !important;
         border: none !important;
@@ -4013,7 +3965,6 @@
         -webkit-backdrop-filter: none !important;
       }
 
-      /* Giữ chữ rõ khi nằm trực tiếp trên ảnh */
       #gioithieu .intro-title {
         color: #062746 !important;
         text-shadow:
@@ -4028,14 +3979,13 @@
           0 3px 18px rgba(255, 255, 255, 0.7) !important;
       }
 
-      /* Làm tag nhẹ hơn để không giống thẻ nổi */
       #gioithieu .intro-kicker,
       #gioithieu .intro-tag {
         background: rgba(255, 255, 255, 0.65) !important;
         border: 1px solid rgba(255, 255, 255, 0.75) !important;
         box-shadow: none !important;
       }
-      /* Chỉnh thẻ member cao gần bằng thẻ thông tin phía trên */
+      /* Member cards */
       #gioithieu .intro-member {
         min-height: 550px !important;
         padding: 22px !important;
@@ -4051,7 +4001,7 @@
       #gioithieu .intro-member {
         grid-template-columns: 170px minmax(0, 1fr) !important;
       }
-      /* Sửa lỗi ảnh member đè lên chữ */
+
       #gioithieu .intro-member {
         grid-template-columns: 300px minmax(0, 1fr) !important;
         min-height: 400px !important;
@@ -4071,7 +4021,7 @@
         min-width: 0 !important;
         padding-left: 0 !important;
       }
-      /* Thu nhỏ ảnh sản phẩm Robot Desk */
+      /* Product image */
       #gioithieu #intro-tong-quan .intro-figure-wrap {
         max-width: 480px !important;
         min-height: 500px !important;
@@ -4107,9 +4057,7 @@
         <div class="quick-side" id="robotSideBox">
           <div class="side-label">Robot đang truy cập</div>
           <select id="robotSelect" class="robot-select"></select>
-          <span id="sideRobotAccess" class="side-small"
-            >Đang kiểm tra quyền...</span
-          >
+          <span id="sideRobotAccess" class="side-small">Đang kiểm tra quyền...</span>
         </div>
 
         <div class="quick-side">
@@ -4146,9 +4094,7 @@
           <button class="navBtn" data-page="tuhoc">
             <span class="navIcon"
               ><svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v17H8a4 4 0 0 0-4 4V5.5Z"
-                />
+                <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v17H8a4 4 0 0 0-4 4V5.5Z" />
                 <path d="M4 19V5.5" />
                 <path d="M8 6h8" /></svg></span
             ><span>Tự học</span>
@@ -4190,9 +4136,7 @@
             <p id="pageDesc">Tổng quan hệ thống Robot-Dashboard.</p>
           </div>
           <div class="topbar-right">
-            <div class="clock-badge">
-              🕒 <span id="clockNow">--:--:--</span>
-            </div>
+            <div class="clock-badge">🕒 <span id="clockNow">--:--:--</span></div>
             <div class="live">
               <span id="liveDot" class="dot"></span
               ><span id="liveText">Đang kết nối Firebase...</span>
@@ -4205,18 +4149,15 @@
             <div class="intro-inner">
               <section class="intro-hero">
                 <div class="intro-hero-card intro-glass">
-                  <span class="intro-kicker"
-                    >Robot-Dashboard • IoT • AI/MCP</span
-                  >
+                  <span class="intro-kicker">Robot-Dashboard • IoT • AI/MCP</span>
                   <h1 class="intro-title">
-                    Desk Robot tương tác và giám sát môi trường không gian làm
-                    việc thông minh
+                    Desk Robot tương tác và giám sát môi trường không gian làm việc
+                    thông minh
                   </h1>
                   <p class="intro-desc">
-                    Hệ thống IoT sử dụng ESP32, cảm biến môi trường, Firebase
-                    Realtime Database, Web Dashboard và AI/MCP để giám sát môi
-                    trường, điều khiển robot và hỗ trợ người dùng trong không
-                    gian học tập/làm việc.
+                    Hệ thống IoT sử dụng ESP32, cảm biến môi trường, Firebase Realtime
+                    Database, Web Dashboard và AI/MCP để giám sát môi trường, điều khiển
+                    robot và hỗ trợ người dùng trong không gian học tập/làm việc.
                   </p>
                   <div class="intro-tags">
                     <span class="intro-tag">ESP32</span>
@@ -4247,18 +4188,14 @@
                     <span>Đơn vị</span><b>Khoa Điện - Điện tử</b>
                   </div>
                   <div class="intro-project-line">
-                    <span>Trường</span
-                    ><b>Trường Đại học Công nghệ Kỹ thuật TP. HCM</b>
+                    <span>Trường</span><b>Trường Đại học Công nghệ Kỹ thuật TP. HCM</b>
                   </div>
                 </div>
               </aside>
 
               <section class="intro-team-grid" aria-label="Nhóm thực hiện">
                 <article class="intro-member intro-glass">
-                  <div
-                    class="intro-photo-wrap"
-                    data-placeholder="Ảnh thành viên 1"
-                  >
+                  <div class="intro-photo-wrap" data-placeholder="Ảnh thành viên 1">
                     <img
                       src="images/member-1.jpg"
                       alt="Bùi Ngọc Thập Nhất"
@@ -4275,16 +4212,12 @@
                       <span class="intro-chip">Nhóm 17</span>
                     </div>
                     <p>
-                      Phụ trách phần cứng, cảm biến, ESP32 và kiểm thử mô hình
-                      robot.
+                      Phụ trách phần cứng, cảm biến, ESP32 và kiểm thử mô hình robot.
                     </p>
                   </div>
                 </article>
                 <article class="intro-member intro-glass">
-                  <div
-                    class="intro-photo-wrap"
-                    data-placeholder="Ảnh thành viên 2"
-                  >
+                  <div class="intro-photo-wrap" data-placeholder="Ảnh thành viên 2">
                     <img
                       src="images/member-2.jpg"
                       alt="Nguyễn Tấn Phát"
@@ -4301,18 +4234,14 @@
                       <span class="intro-chip">Nhóm 17</span>
                     </div>
                     <p>
-                      Phụ trách Web Dashboard, Firebase, phân quyền và tích hợp
-                      AI/MCP.
+                      Phụ trách Web Dashboard, Firebase, phân quyền và tích hợp AI/MCP.
                     </p>
                   </div>
                 </article>
               </section>
 
               <div class="intro-layout">
-                <nav
-                  class="intro-side-nav intro-glass"
-                  aria-label="Mục lục giới thiệu"
-                >
+                <nav class="intro-side-nav intro-glass" aria-label="Mục lục giới thiệu">
                   <a href="#intro-thong-tin">Thông tin chung</a>
                   <a href="#intro-tong-quan">Tổng quan</a>
                   <a href="#intro-kien-truc">Kiến trúc IoT</a>
@@ -4333,8 +4262,8 @@
                       <div class="intro-info-item">
                         <span>Tên đề tài</span
                         ><b
-                          >Desk Robot tương tác và giám sát môi trường không
-                          gian làm việc thông minh</b
+                          >Desk Robot tương tác và giám sát môi trường không gian làm
+                          việc thông minh</b
                         >
                       </div>
                       <div class="intro-info-item">
@@ -4344,8 +4273,7 @@
                         <span>Nhóm thực hiện</span><b>Nhóm 17</b>
                       </div>
                       <div class="intro-info-item">
-                        <span>Giảng viên hướng dẫn</span
-                        ><b>ThS. Trịnh Quốc Thanh</b>
+                        <span>Giảng viên hướng dẫn</span><b>ThS. Trịnh Quốc Thanh</b>
                       </div>
                       <div class="intro-info-item">
                         <span>Sinh viên</span
@@ -4354,8 +4282,7 @@
                       <div class="intro-info-item">
                         <span>Định hướng</span
                         ><b
-                          >Robot IoT, Dashboard realtime, AI/MCP phân tích môi
-                          trường</b
+                          >Robot IoT, Dashboard realtime, AI/MCP phân tích môi trường</b
                         >
                       </div>
                     </div>
@@ -4370,13 +4297,12 @@
                     </div>
                     <div class="intro-split">
                       <p class="intro-text">
-                        Hệ thống Desk Robot dùng ESP32 làm bộ xử lý trung tâm,
-                        thu thập dữ liệu từ cảm biến AHT20, BMP280 và BH1750 để
-                        đo nhiệt độ, độ ẩm, áp suất và ánh sáng. Dữ liệu được
-                        gửi lên Firebase Realtime Database và hiển thị trên Web
-                        Dashboard. Người dùng có thể theo dõi dữ liệu realtime,
-                        xem biểu đồ, điều khiển robot và nhận phân tích thông
-                        minh từ AI/MCP.
+                        Hệ thống Desk Robot dùng ESP32 làm bộ xử lý trung tâm, thu thập
+                        dữ liệu từ cảm biến AHT20, BMP280 và BH1750 để đo nhiệt độ, độ
+                        ẩm, áp suất và ánh sáng. Dữ liệu được gửi lên Firebase Realtime
+                        Database và hiển thị trên Web Dashboard. Người dùng có thể theo
+                        dõi dữ liệu realtime, xem biểu đồ, điều khiển robot và nhận phân
+                        tích thông minh từ AI/MCP.
                       </p>
                       <div
                         class="intro-figure-wrap"
@@ -4420,40 +4346,28 @@
                           <span class="intro-step-no">01</span>
                           <div>
                             <b>Lớp cảm biến</b>
-                            <p>
-                              AHT20, BMP280 và BH1750 thu thập dữ liệu môi
-                              trường.
-                            </p>
+                            <p>AHT20, BMP280 và BH1750 thu thập dữ liệu môi trường.</p>
                           </div>
                         </div>
                         <div class="intro-step">
                           <span class="intro-step-no">02</span>
                           <div>
                             <b>Lớp xử lý</b>
-                            <p>
-                              ESP32 đọc, kiểm tra, chuẩn hóa và đóng gói dữ
-                              liệu.
-                            </p>
+                            <p>ESP32 đọc, kiểm tra, chuẩn hóa và đóng gói dữ liệu.</p>
                           </div>
                         </div>
                         <div class="intro-step">
                           <span class="intro-step-no">03</span>
                           <div>
                             <b>Lớp truyền thông</b>
-                            <p>
-                              Wi-Fi và HTTP REST truyền dữ liệu lên nền tảng
-                              cloud.
-                            </p>
+                            <p>Wi-Fi và HTTP REST truyền dữ liệu lên nền tảng cloud.</p>
                           </div>
                         </div>
                         <div class="intro-step">
                           <span class="intro-step-no">04</span>
                           <div>
                             <b>Lớp cloud</b>
-                            <p>
-                              Firebase Realtime Database đồng bộ dữ liệu hai
-                              chiều.
-                            </p>
+                            <p>Firebase Realtime Database đồng bộ dữ liệu hai chiều.</p>
                           </div>
                         </div>
                         <div class="intro-step">
@@ -4461,8 +4375,8 @@
                           <div>
                             <b>Lớp ứng dụng</b>
                             <p>
-                              Web Dashboard hiển thị dữ liệu, biểu đồ và lệnh
-                              điều khiển.
+                              Web Dashboard hiển thị dữ liệu, biểu đồ và lệnh điều
+                              khiển.
                             </p>
                           </div>
                         </div>
@@ -4470,9 +4384,7 @@
                           <span class="intro-step-no">06</span>
                           <div>
                             <b>Lớp thông minh</b>
-                            <p>
-                              AI Agent / MCP phân tích dữ liệu và đưa ra gợi ý.
-                            </p>
+                            <p>AI Agent / MCP phân tích dữ liệu và đưa ra gợi ý.</p>
                           </div>
                         </div>
                       </div>
@@ -4490,50 +4402,36 @@
                       <div class="intro-feature">
                         <span class="intro-feature-no">01</span
                         ><b>Giám sát môi trường</b>
-                        <p>
-                          Nhiệt độ, độ ẩm, ánh sáng, áp suất theo thời gian
-                          thực.
-                        </p>
+                        <p>Nhiệt độ, độ ẩm, ánh sáng, áp suất theo thời gian thực.</p>
                       </div>
                       <div class="intro-feature">
                         <span class="intro-feature-no">02</span
                         ><b>Dashboard realtime</b>
                         <p>
-                          Hiển thị số liệu, trạng thái robot và cập nhật từ
-                          Firebase.
+                          Hiển thị số liệu, trạng thái robot và cập nhật từ Firebase.
                         </p>
                       </div>
                       <div class="intro-feature">
-                        <span class="intro-feature-no">03</span
-                        ><b>Điều khiển robot</b>
+                        <span class="intro-feature-no">03</span><b>Điều khiển robot</b>
                         <p>Chào, vẫy tay, quay đầu, nhìn thẳng và dừng.</p>
                       </div>
                       <div class="intro-feature">
-                        <span class="intro-feature-no">04</span
-                        ><b>Đăng nhập OTP</b>
+                        <span class="intro-feature-no">04</span><b>Đăng nhập OTP</b>
                         <p>
-                          Xác minh email bằng OTP qua EmailJS trước khi vào hệ
-                          thống.
+                          Xác minh email bằng OTP qua EmailJS trước khi vào hệ thống.
                         </p>
                       </div>
                       <div class="intro-feature">
                         <span class="intro-feature-no">05</span
                         ><b>Phân quyền Robot ID</b>
-                        <p>
-                          Admin cấp/thu hồi quyền truy cập robot cho từng user.
-                        </p>
+                        <p>Admin cấp/thu hồi quyền truy cập robot cho từng user.</p>
                       </div>
                       <div class="intro-feature">
-                        <span class="intro-feature-no">06</span
-                        ><b>Biểu đồ & lịch sử</b>
-                        <p>
-                          Xem dữ liệu theo ngày và xuất CSV/JSON phục vụ báo
-                          cáo.
-                        </p>
+                        <span class="intro-feature-no">06</span><b>Biểu đồ & lịch sử</b>
+                        <p>Xem dữ liệu theo ngày và xuất CSV/JSON phục vụ báo cáo.</p>
                       </div>
                       <div class="intro-feature">
-                        <span class="intro-feature-no">07</span
-                        ><b>AI/MCP Insight</b>
+                        <span class="intro-feature-no">07</span><b>AI/MCP Insight</b>
                         <p>Phân tích môi trường và hỗ trợ ChatBox Python.</p>
                       </div>
                     </div>
@@ -4550,18 +4448,15 @@
                       <div class="intro-highlight">
                         <div>
                           <b>Phần cứng thật</b>
-                          <p>
-                            Mô hình robot dùng ESP32, cảm biến và cơ cấu chấp
-                            hành.
-                          </p>
+                          <p>Mô hình robot dùng ESP32, cảm biến và cơ cấu chấp hành.</p>
                         </div>
                       </div>
                       <div class="intro-highlight">
                         <div>
                           <b>Cloud realtime</b>
                           <p>
-                            Firebase đóng vai trò trung gian giữa robot,
-                            dashboard và AI.
+                            Firebase đóng vai trò trung gian giữa robot, dashboard và
+                            AI.
                           </p>
                         </div>
                       </div>
@@ -4569,8 +4464,8 @@
                         <div>
                           <b>Giao diện trực quan</b>
                           <p>
-                            Dashboard có giám sát, điều khiển, biểu đồ, cài đặt
-                            và admin.
+                            Dashboard có giám sát, điều khiển, biểu đồ, cài đặt và
+                            admin.
                           </p>
                         </div>
                       </div>
@@ -4578,8 +4473,7 @@
                         <div>
                           <b>Bảo mật demo</b>
                           <p>
-                            OTP, phân quyền user/admin và quản lý quyền theo
-                            Robot ID.
+                            OTP, phân quyền user/admin và quản lý quyền theo Robot ID.
                           </p>
                         </div>
                       </div>
@@ -4587,8 +4481,8 @@
                         <div>
                           <b>AI/MCP mở rộng</b>
                           <p>
-                            Phân tích điều kiện môi trường và phản hồi bằng ngôn
-                            ngữ tự nhiên.
+                            Phân tích điều kiện môi trường và phản hồi bằng ngôn ngữ tự
+                            nhiên.
                           </p>
                         </div>
                       </div>
@@ -4596,8 +4490,7 @@
                         <div>
                           <b>Dễ phát triển tiếp</b>
                           <p>
-                            Có thể mở rộng nhiều robot, nhiều user và báo cáo dữ
-                            liệu.
+                            Có thể mở rộng nhiều robot, nhiều user và báo cáo dữ liệu.
                           </p>
                         </div>
                       </div>
@@ -4615,10 +4508,7 @@
                       <div class="intro-future-item">
                         <div>
                           <b>Firebase Authentication</b>
-                          <p>
-                            Nâng cấp xác thực chuẩn và quản lý tài khoản tốt
-                            hơn.
-                          </p>
+                          <p>Nâng cấp xác thực chuẩn và quản lý tài khoản tốt hơn.</p>
                         </div>
                       </div>
                       <div class="intro-future-item">
@@ -4630,36 +4520,25 @@
                       <div class="intro-future-item">
                         <div>
                           <b>Điều khiển giọng nói</b>
-                          <p>
-                            Tích hợp nhận diện giọng nói cho thao tác tự nhiên
-                            hơn.
-                          </p>
+                          <p>Tích hợp nhận diện giọng nói cho thao tác tự nhiên hơn.</p>
                         </div>
                       </div>
                       <div class="intro-future-item">
                         <div>
                           <b>AI cảnh báo tự động</b>
-                          <p>
-                            Phân tích bất thường và chủ động gợi ý hành động.
-                          </p>
+                          <p>Phân tích bất thường và chủ động gợi ý hành động.</p>
                         </div>
                       </div>
                       <div class="intro-future-item">
                         <div>
                           <b>Quản lý nhiều robot</b>
-                          <p>
-                            Mở rộng dashboard cho nhiều robot và nhiều người
-                            dùng.
-                          </p>
+                          <p>Mở rộng dashboard cho nhiều robot và nhiều người dùng.</p>
                         </div>
                       </div>
                       <div class="intro-future-item">
                         <div>
                           <b>Tối ưu mobile</b>
-                          <p>
-                            Cải thiện trải nghiệm trên điện thoại và màn hình
-                            nhỏ.
-                          </p>
+                          <p>Cải thiện trải nghiệm trên điện thoại và màn hình nhỏ.</p>
                         </div>
                       </div>
                     </div>
@@ -4680,9 +4559,7 @@
             <button class="sub-tab-btn active" data-subtab="workspace">
               Không gian làm việc
             </button>
-            <button class="sub-tab-btn" data-subtab="controls">
-              Điều khiển
-            </button>
+            <button class="sub-tab-btn" data-subtab="controls">Điều khiển</button>
             <button class="sub-tab-btn" data-subtab="logs">Nhật ký</button>
           </div>
 
@@ -4697,10 +4574,7 @@
                       <h3>Môi trường hiện tại</h3>
                       <p id="workspaceUpdatedAt" class="env-time">--</p>
                     </div>
-                    <button
-                      class="ai-report-btn"
-                      onclick="runLocalMcpAnalysis()"
-                    >
+                    <button class="ai-report-btn" onclick="runLocalMcpAnalysis()">
                       <span class="btn-icon-mini">□</span> B.cáo AI
                     </button>
                   </div>
@@ -4713,8 +4587,7 @@
                     ></div>
                     <div>
                       <div class="env-temp-line">
-                        <span id="workspaceTempLarge" class="env-temp-number"
-                          >--</span
+                        <span id="workspaceTempLarge" class="env-temp-number">--</span
                         ><span class="env-degree">°C</span>
                       </div>
                       <div id="workspaceFeeling" class="env-feeling">
@@ -4736,9 +4609,7 @@
                   <div class="env-stat-box">
                     <span class="stat-icon humidity">◌</span>
                     <span class="stat-label">Độ ẩm</span>
-                    <b
-                      ><span id="workspaceHumidity">--</span><small>%</small></b
-                    >
+                    <b><span id="workspaceHumidity">--</span><small>%</small></b>
                   </div>
                   <div class="env-stat-box">
                     <span class="stat-icon light">☼</span>
@@ -4748,18 +4619,12 @@
                   <div class="env-stat-box">
                     <span class="stat-icon pressure">◠</span>
                     <span class="stat-label">Áp suất</span>
-                    <b
-                      ><span id="workspacePressure">--</span
-                      ><small>hPa</small></b
-                    >
+                    <b><span id="workspacePressure">--</span><small>hPa</small></b>
                   </div>
                   <div class="env-stat-box">
                     <span class="stat-icon comfort">↗</span>
                     <span class="stat-label">Comfort</span>
-                    <b
-                      ><span id="workspaceComfort">--</span
-                      ><small>/100</small></b
-                    >
+                    <b><span id="workspaceComfort">--</span><small>/100</small></b>
                   </div>
                 </div>
               </section>
@@ -4776,17 +4641,12 @@
                   <div class="compact-status-grid refined-status-grid">
                     <div><span>Tổng quan</span><b id="mcpOverall">--</b></div>
                     <div><span>Nhiệt độ</span><b id="mcpTempStatus">--</b></div>
-                    <div>
-                      <span>Độ ẩm</span><b id="mcpHumidityStatus">--</b>
-                    </div>
-                    <div>
-                      <span>Ánh sáng</span><b id="mcpLightStatus">--</b>
-                    </div>
+                    <div><span>Độ ẩm</span><b id="mcpHumidityStatus">--</b></div>
+                    <div><span>Ánh sáng</span><b id="mcpLightStatus">--</b></div>
                   </div>
                   <div class="comfort-row-lite refined-comfort-row">
                     <span
-                      >Mức độ thoải mái
-                      <b><span id="mcpComfort">--</span>/100</b></span
+                      >Mức độ thoải mái <b><span id="mcpComfort">--</span>/100</b></span
                     >
                     <div class="mcp-progress-wrap">
                       <div id="mcpProgress" class="mcp-progress"></div>
@@ -4806,9 +4666,7 @@
                     >
                       Phân tích lại
                     </button>
-                    <span class="muted"
-                      >Cập nhật: <b id="mcpUpdatedAt">--</b></span
-                    >
+                    <span class="muted">Cập nhật: <b id="mcpUpdatedAt">--</b></span>
                   </div>
                   <div
                     id="mcpCollapsibleFull"
@@ -4835,23 +4693,17 @@
                     <span class="tiny-pill">Realtime</span>
                   </div>
                   <div class="system-list-lite refined-system-list">
+                    <div><span>Thiết bị & mạng</span><b id="stDevice">--</b></div>
+                    <div><span>Lệnh đang chạy</span><b id="stAction">--</b></div>
                     <div>
-                      <span>Thiết bị & mạng</span><b id="stDevice">--</b>
-                    </div>
-                    <div>
-                      <span>Lệnh đang chạy</span><b id="stAction">--</b>
-                    </div>
-                    <div>
-                      <span>Giá trị Firebase hiện tại</span
-                      ><b id="stRawAction">--</b>
+                      <span>Giá trị Firebase hiện tại</span><b id="stRawAction">--</b>
                     </div>
                     <div class="system-ok-box">
                       <span>Cảnh báo hệ thống</span><b id="stCanhBao">--</b>
                     </div>
                   </div>
                   <p class="compact-note">
-                    Thông tin chính được gom lại để dễ xem trên máy tính và điện
-                    thoại.
+                    Thông tin chính được gom lại để dễ xem trên máy tính và điện thoại.
                   </p>
                   <span style="display: none"
                     ><span id="mNhietDo">--</span><span id="mDoAm">--</span
@@ -4888,18 +4740,12 @@
                       <span class="remote-label-lg">Chào</span>
                       <span class="remote-command-lg">CHAO</span>
                     </button>
-                    <button
-                      class="remote-btn-lg"
-                      onclick="sendCommand('VAY_TAY_TRAI')"
-                    >
+                    <button class="remote-btn-lg" onclick="sendCommand('VAY_TAY_TRAI')">
                       <span class="remote-icon-lg">LT</span>
                       <span class="remote-label-lg">Vẫy tay trái</span>
                       <span class="remote-command-lg">VAY_TAY_TRAI</span>
                     </button>
-                    <button
-                      class="remote-btn-lg"
-                      onclick="sendCommand('VAY_TAY_PHAI')"
-                    >
+                    <button class="remote-btn-lg" onclick="sendCommand('VAY_TAY_PHAI')">
                       <span class="remote-icon-lg">PT</span>
                       <span class="remote-label-lg">Vẫy tay phải</span>
                       <span class="remote-command-lg">VAY_TAY_PHAI</span>
@@ -4912,10 +4758,7 @@
                       <span class="remote-label-lg">Vẫy hai tay</span>
                       <span class="remote-command-lg">VAY_HAI_TAY</span>
                     </button>
-                    <button
-                      class="remote-btn-lg"
-                      onclick="sendCommand('NHIN_THANG')"
-                    >
+                    <button class="remote-btn-lg" onclick="sendCommand('NHIN_THANG')">
                       <span class="remote-icon-lg">↑</span>
                       <span class="remote-label-lg">Nhìn thẳng</span>
                       <span class="remote-command-lg">NHIN_THANG</span>
@@ -4936,10 +4779,7 @@
                       <span class="remote-label-lg">Lắc đầu phải</span>
                       <span class="remote-command-lg">QUAY_DAU_PHAI</span>
                     </button>
-                    <button
-                      class="remote-btn-lg danger"
-                      onclick="sendCommand('DUNG')"
-                    >
+                    <button class="remote-btn-lg danger" onclick="sendCommand('DUNG')">
                       <span class="remote-icon-lg">×</span>
                       <span class="remote-label-lg">Dừng</span>
                       <span class="remote-command-lg">DUNG</span>
@@ -4999,10 +4839,7 @@
             <div class="logs-tab-content">
               <div class="card logs-card-full">
                 <h3>Nhật ký hoạt động</h3>
-                <div
-                  class="tableWrap"
-                  style="max-height: 380px; overflow-y: auto"
-                >
+                <div class="tableWrap" style="max-height: 380px; overflow-y: auto">
                   <table>
                     <thead>
                       <tr>
@@ -5014,9 +4851,7 @@
                     </thead>
                     <tbody id="logTable">
                       <tr>
-                        <td colspan="4" class="empty">
-                          Chưa có nhật ký hoạt động
-                        </td>
+                        <td colspan="4" class="empty">Chưa có nhật ký hoạt động</td>
                       </tr>
                     </tbody>
                   </table>
@@ -5030,8 +4865,8 @@
           <div class="page-intro-line">
             <h3>ChatBox AI Robot</h3>
             <p>
-              Trao đổi với Python MCP để hỏi về robot, môi trường và điều khiển
-              bằng ngôn ngữ tự nhiên.
+              Trao đổi với Python MCP để hỏi về robot, môi trường và điều khiển bằng
+              ngôn ngữ tự nhiên.
             </p>
           </div>
           <div class="chatbox-tab-content">
@@ -5047,9 +4882,7 @@
                 <button class="primary-btn" onclick="sendPythonChat()">
                   Gửi cho Python
                 </button>
-                <button class="ghost-btn" onclick="clearPythonChatInput()">
-                  Xóa
-                </button>
+                <button class="ghost-btn" onclick="clearPythonChatInput()">Xóa</button>
               </div>
               <div class="chat-last-full">
                 <div class="chat-bubble-q">
@@ -5096,23 +4929,15 @@
                 <button class="primary-btn" onclick="startPomodoro('study')">
                   Bắt đầu
                 </button>
-                <button class="ghost-btn" onclick="pausePomodoro()">
-                  Tạm dừng
-                </button>
-                <button class="ghost-btn" onclick="resumePomodoro()">
-                  Tiếp tục
-                </button>
-                <button class="danger-btn" onclick="resetPomodoro()">
-                  Đặt lại
-                </button>
+                <button class="ghost-btn" onclick="pausePomodoro()">Tạm dừng</button>
+                <button class="ghost-btn" onclick="resumePomodoro()">Tiếp tục</button>
+                <button class="danger-btn" onclick="resetPomodoro()">Đặt lại</button>
               </div>
               <div class="clean-mini-stats">
                 <div><span>Phiên</span><b id="sessionCount">0</b></div>
                 <div><span>Vòng</span><b id="sessionRound">1</b></div>
                 <div><span>Hôm nay</span><b id="studyTotalToday">0p</b></div>
-                <div>
-                  <span>Firebase</span><b id="firebasePomoState">Đồng bộ</b>
-                </div>
+                <div><span>Firebase</span><b id="firebasePomoState">Đồng bộ</b></div>
               </div>
               <details class="config-details-lite clean-config">
                 <summary>Cấu hình thời gian</summary>
@@ -5141,9 +4966,7 @@
                     value="15"
                     placeholder="Nghỉ dài"
                   />
-                  <button class="ghost-btn" onclick="applyPomodoroConfig()">
-                    Lưu
-                  </button>
+                  <button class="ghost-btn" onclick="applyPomodoroConfig()">Lưu</button>
                 </div>
               </details>
             </section>
@@ -5169,9 +4992,7 @@
                 <input id="studyTime" type="time" />
                 <input id="studySubject" placeholder="Môn học" />
                 <input id="studyNote" placeholder="Ghi chú" />
-                <button class="primary-btn" onclick="addStudySchedule()">
-                  Thêm
-                </button>
+                <button class="primary-btn" onclick="addStudySchedule()">Thêm</button>
               </div>
               <div class="weekly-schedule-wrap">
                 <table class="weekly-schedule-table">
@@ -5208,9 +5029,7 @@
                   id="dailyTodoInput"
                   placeholder="Ví dụ: Ôn bài mạch điện 30 phút"
                 />
-                <button class="primary-btn" onclick="addDailyTodo()">
-                  Thêm
-                </button>
+                <button class="primary-btn" onclick="addDailyTodo()">Thêm</button>
               </div>
               <div id="dailyTodoList" class="daily-todo-list">
                 <div class="empty mini-empty">Chưa có việc cần làm hôm nay</div>
@@ -5255,16 +5074,11 @@
                 </button>
               </div>
               <div class="controls-row clean-chat-actions">
-                <button class="primary-btn" onclick="sendStudyChat()">
-                  Gửi AI
-                </button>
-                <button class="ghost-btn" onclick="clearStudyChat()">
-                  Xóa
-                </button>
+                <button class="primary-btn" onclick="sendStudyChat()">Gửi AI</button>
+                <button class="ghost-btn" onclick="clearStudyChat()">Xóa</button>
               </div>
               <div class="study-answer-box clean-answer-box">
-                <b>AI:</b> <span id="studyChatAnswer">Chưa có câu trả lời.</span
-                ><br />
+                <b>AI:</b> <span id="studyChatAnswer">Chưa có câu trả lời.</span><br />
                 <span class="muted"
                   >Trạng thái: <span id="studyChatStatus">--</span></span
                 >
@@ -5337,10 +5151,7 @@
                 <button class="ghost-btn" onclick="setTodayAndLoadHistory()">
                   Hôm nay
                 </button>
-                <button
-                  class="primary-btn"
-                  onclick="loadHistoryForSelectedDate()"
-                >
+                <button class="primary-btn" onclick="loadHistoryForSelectedDate()">
                   Xem dữ liệu
                 </button>
               </div>
@@ -5349,8 +5160,8 @@
               <canvas id="historyChart"></canvas>
             </div>
             <p id="historyChartHint" class="chart-hint">
-              Biểu đồ tự rút gọn điểm dữ liệu và chỉ hiển thị mốc giờ chính để
-              dễ quan sát.
+              Biểu đồ tự rút gọn điểm dữ liệu và chỉ hiển thị mốc giờ chính để dễ quan
+              sát.
             </p>
           </div>
 
@@ -5409,9 +5220,7 @@
           <div class="card settings-hero">
             <div>
               <span class="pill">Tài khoản cá nhân</span>
-              <h3 style="font-size: 24px; margin: 12px 0 6px">
-                ⚙ Cài đặt tài khoản
-              </h3>
+              <h3 style="font-size: 24px; margin: 12px 0 6px">⚙ Cài đặt tài khoản</h3>
               <p>Đổi tên hiển thị, đổi mật khẩu và xem quyền robot được cấp.</p>
             </div>
             <div class="settings-badge" id="settingsRoleBadge">Quyền: --</div>
@@ -5420,9 +5229,7 @@
           <div class="grid cols2" style="margin-top: 16px">
             <div class="soft-panel">
               <h3>👤 Thông tin tài khoản</h3>
-              <p class="soft-sub">
-                Tên hiển thị sẽ cập nhật ở sidebar và Firebase.
-              </p>
+              <p class="soft-sub">Tên hiển thị sẽ cập nhật ở sidebar và Firebase.</p>
               <div class="settings-form">
                 <input id="settingName" placeholder="Tên hiển thị" />
                 <input id="settingEmail" placeholder="Email" disabled />
@@ -5433,20 +5240,10 @@
             </div>
             <div class="soft-panel">
               <h3>🔐 Đổi mật khẩu</h3>
-              <p class="soft-sub">
-                Nhập đúng mật khẩu cũ trước khi đổi mật khẩu mới.
-              </p>
+              <p class="soft-sub">Nhập đúng mật khẩu cũ trước khi đổi mật khẩu mới.</p>
               <div class="settings-form">
-                <input
-                  id="oldPassword"
-                  type="password"
-                  placeholder="Mật khẩu cũ"
-                />
-                <input
-                  id="newPassword"
-                  type="password"
-                  placeholder="Mật khẩu mới"
-                />
+                <input id="oldPassword" type="password" placeholder="Mật khẩu cũ" />
+                <input id="newPassword" type="password" placeholder="Mật khẩu mới" />
                 <input
                   id="confirmPassword"
                   type="password"
@@ -5462,8 +5259,8 @@
           <div class="soft-panel" style="margin-top: 16px">
             <h3>Robot được cấp quyền</h3>
             <p class="soft-sub">
-              User chỉ điều khiển các robot trong danh sách này. Admin có thể
-              quản lý toàn bộ robot.
+              User chỉ điều khiển các robot trong danh sách này. Admin có thể quản lý
+              toàn bộ robot.
             </p>
             <div id="settingsRobotList" class="robot-chip-list"></div>
           </div>
@@ -5474,8 +5271,7 @@
             <div class="card">
               <h3>Quản trị tài khoản</h3>
               <p>
-                Admin có thể cấp hoặc thu hồi quyền truy cập robot cho từng tài
-                khoản.
+                Admin có thể cấp hoặc thu hồi quyền truy cập robot cho từng tài khoản.
               </p>
               <div class="controls-row" style="margin-top: 14px">
                 <input
@@ -5512,16 +5308,12 @@
             <div class="card">
               <h3>Tạo / khai báo robot</h3>
               <p>
-                Khai báo robot mới để admin nhìn thấy trong danh sách. ESP32
-                phải dùng đúng Robot ID này.
+                Khai báo robot mới để admin nhìn thấy trong danh sách. ESP32 phải dùng
+                đúng Robot ID này.
               </p>
               <div class="controls-row" style="margin-top: 14px">
                 <input id="newRobotId" type="text" placeholder="Robot ID" />
-                <input
-                  id="newRobotName"
-                  type="text"
-                  placeholder="Tên hiển thị robot"
-                />
+                <input id="newRobotName" type="text" placeholder="Tên hiển thị robot" />
                 <button class="primary-btn" onclick="createRobotRegistry()">
                   Lưu robot
                 </button>
@@ -5532,10 +5324,7 @@
           <div class="grid cols2" style="margin-top: 16px">
             <div class="card">
               <h3>Danh sách tài khoản</h3>
-              <div
-                class="tableWrap"
-                style="max-height: 420px; overflow-y: auto"
-              >
+              <div class="tableWrap" style="max-height: 420px; overflow-y: auto">
                 <table>
                   <thead>
                     <tr>
@@ -5555,10 +5344,7 @@
             </div>
             <div class="card">
               <h3>Danh sách robot</h3>
-              <div
-                class="tableWrap"
-                style="max-height: 420px; overflow-y: auto"
-              >
+              <div class="tableWrap" style="max-height: 420px; overflow-y: auto">
                 <table>
                   <thead>
                     <tr>
@@ -5583,17 +5369,7 @@
     <script>
       "use strict";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyA1RX1Iwr5oxuQoqnllYc7qd1InKqsZ1b0",
-        authDomain: "robot-e9176.firebaseapp.com",
-        databaseURL:
-          "https://robot-e9176-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "robot-e9176",
-        storageBucket: "robot-e9176.firebasestorage.app",
-        messagingSenderId: "609437516347",
-        appId: "1:609437516347:web:76948ab97cabbd9413921e",
-        measurementId: "G-Z47HZ26C8B",
-      };
+      const firebaseConfig = window.getRobotConfig("firebase");
 
       firebase.initializeApp(firebaseConfig);
       const db = firebase.database();
@@ -5658,9 +5434,7 @@
 
       function robotPath(child = "", robotId = activeRobotId) {
         const clean = String(child || "").replace(/^\/+/, "");
-        return clean
-          ? `${robotBasePath(robotId)}/${clean}`
-          : robotBasePath(robotId);
+        return clean ? `${robotBasePath(robotId)}/${clean}` : robotBasePath(robotId);
       }
 
       function userCanAccessRobot(robotId) {
@@ -5693,15 +5467,9 @@
           "Giám sát",
           "Theo dõi trạng thái robot, cảm biến và hoạt động theo thời gian thực.",
         ],
-        chatbox: [
-          "ChatBox",
-          "Hỏi AI robot qua Python MCP và xem phản hồi mới nhất.",
-        ],
+        chatbox: ["ChatBox", "Hỏi AI robot qua Python MCP và xem phản hồi mới nhất."],
         tuhoc: ["Tự học", "Đếm ngược 25 phút kiểu Pomodoro để hỗ trợ học tập."],
-        bieudo: [
-          "Biểu đồ",
-          "Biểu đồ realtime và biểu đồ lịch sử theo ngày/tháng/năm.",
-        ],
+        bieudo: ["Biểu đồ", "Biểu đồ realtime và biểu đồ lịch sử theo ngày/tháng/năm."],
         caidat: [
           "Cài đặt",
           "Quản lý tên hiển thị, mật khẩu và quyền robot của tài khoản.",
@@ -5829,9 +5597,7 @@
       const fmt = (v, digits = 2) => {
         if (v === undefined || v === null || v === "") return "--";
         const n = Number(v);
-        return Number.isFinite(n)
-          ? n.toFixed(digits).replace(/\.00$/, "")
-          : String(v);
+        return Number.isFinite(n) ? n.toFixed(digits).replace(/\.00$/, "") : String(v);
       };
       const num = (v, fallback = 0) => {
         const n = Number(v);
@@ -5871,7 +5637,7 @@
         NHIN_TRAI: "Đang nhìn sang trái",
         NHIN_PHAI: "Đang nhìn sang phải",
         NONE: "Không có lệnh",
-        // Giữ alias cũ để không lỗi nếu Firebase còn dữ liệu cũ
+        // Giữ alias cho dữ liệu Firebase cũ.
         VAY_TAY: "Đang vẫy tay",
         DANG_VAY_TAY: "Đang vẫy tay",
         WAVE: "Đang vẫy tay",
@@ -5906,19 +5672,10 @@
           lower.includes("wave")
         )
           return "Đang vẫy tay";
-        if (lower.includes("nghe") || lower.includes("listen"))
-          return "Đang nghe lệnh";
-        if (
-          lower.includes("cười") ||
-          lower.includes("cuoi") ||
-          lower.includes("smile")
-        )
+        if (lower.includes("nghe") || lower.includes("listen")) return "Đang nghe lệnh";
+        if (lower.includes("cười") || lower.includes("cuoi") || lower.includes("smile"))
           return "Đang cười";
-        if (
-          lower.includes("nhảy") ||
-          lower.includes("nhay") ||
-          lower.includes("dance")
-        )
+        if (lower.includes("nhảy") || lower.includes("nhay") || lower.includes("dance"))
           return "Đang nhảy";
         return raw;
       }
@@ -5942,7 +5699,7 @@
       let lastHistoryWrite = 0;
       let lastHistorySignature = "";
       let lastStudyRefreshRequestId = "";
-      // ===== Đo độ trễ realtime / điều khiển bằng timestamp Firebase =====
+      // Đo độ trễ qua timestamp Firebase.
       let lastSensorLatencyKey = "";
       const pendingCommandMap = {};
 
@@ -6126,9 +5883,7 @@
 
       function setFirebaseStatus(ok) {
         $("liveDot").classList.toggle("on", !!ok);
-        $("liveText").textContent = ok
-          ? "Đã kết nối Firebase"
-          : "Mất kết nối Firebase";
+        $("liveText").textContent = ok ? "Đã kết nối Firebase" : "Mất kết nối Firebase";
       }
 
       function pushRealtimeChart(ts) {
@@ -6182,18 +5937,13 @@
           dateKey: todayKey(),
         };
         const signature = JSON.stringify(payload);
-        if (
-          signature === lastHistorySignature &&
-          now - lastHistoryWrite < 55000
-        )
+        if (signature === lastHistorySignature && now - lastHistoryWrite < 55000)
           return;
         if (now - lastHistoryWrite < 45000) return;
         lastHistorySignature = signature;
         lastHistoryWrite = now;
         try {
-          await db
-            .ref(robotPath(`LichSuCamBien/${payload.dateKey}`))
-            .push(payload);
+          await db.ref(robotPath(`LichSuCamBien/${payload.dateKey}`)).push(payload);
         } catch (err) {
           console.warn("Không lưu được lịch sử cảm biến:", err);
         }
@@ -6233,10 +5983,7 @@
         setText("workspaceLight", fmt(ts.AnhSang, 0));
         setText("workspacePressure", fmt(ts.ApSuat, 0));
         setText("workspaceRobotId", activeRobotId);
-        setText(
-          "workspaceUpdatedAt",
-          ts.ThoiGianCapNhat || tb.ThoiGianCapNhat || "--",
-        );
+        setText("workspaceUpdatedAt", ts.ThoiGianCapNhat || tb.ThoiGianCapNhat || "--");
         setText("mPin", fmt(ts.Pin));
         setText("mAmThanh", fmt(ts.AmThanh));
         setText("mCamXuc", tb.CamXuc || robotGS.CamXuc || "--");
@@ -6289,8 +6036,7 @@
         $("logTable").innerHTML = logRows
           .slice(0, 40)
           .map((l) => {
-            const actionText =
-              l.loai === "LOGIN" ? " Đăng nhập" : "🚪 Đăng xuất";
+            const actionText = l.loai === "LOGIN" ? " Đăng nhập" : "🚪 Đăng xuất";
             return `
         <tr>
           <td>${escapeHtml(l.thoiGian || "")}</td>
@@ -6307,9 +6053,7 @@
           id,
           ...(typeof item === "object" ? item : { ghiChu: String(item) }),
         }));
-        items.sort(
-          (a, b) => Number(b.timestamp || 0) - Number(a.timestamp || 0),
-        );
+        items.sort((a, b) => Number(b.timestamp || 0) - Number(a.timestamp || 0));
         pomodoroHistoryRows = items.slice(0, 50);
         if (!pomodoroHistoryRows.length) {
           $("pomoHistoryTable").innerHTML =
@@ -6344,15 +6088,10 @@
         );
       }
 
-      // ---------------- MCP Environment Analysis Dashboard ----------------
+      // MCP Environment Analysis Dashboard
       function envValue(data, keys, fallback = null) {
         for (const k of keys) {
-          if (
-            data &&
-            data[k] !== undefined &&
-            data[k] !== null &&
-            data[k] !== ""
-          )
+          if (data && data[k] !== undefined && data[k] !== null && data[k] !== "")
             return data[k];
         }
         return fallback;
@@ -6363,24 +6102,13 @@
           temperature: num(
             envValue(
               ts,
-              [
-                "NhietDo",
-                "nhiet_do",
-                "temperature",
-                "Temperature",
-                "temp",
-                "Temp",
-              ],
+              ["NhietDo", "nhiet_do", "temperature", "Temperature", "temp", "Temp"],
               null,
             ),
             null,
           ),
           humidity: num(
-            envValue(
-              ts,
-              ["DoAm", "do_am", "humidity", "Humidity", "hum", "Hum"],
-              null,
-            ),
+            envValue(ts, ["DoAm", "do_am", "humidity", "Humidity", "hum", "Hum"], null),
             null,
           ),
           light: num(
@@ -6446,9 +6174,7 @@
             advice.push("Nên bật đèn nếu cần học tập hoặc làm việc.");
           } else if (l < 300) {
             light_status = "DIM";
-            advice.push(
-              "Ánh sáng hơi yếu, nên tăng sáng nếu đọc sách hoặc học bài.",
-            );
+            advice.push("Ánh sáng hơi yếu, nên tăng sáng nếu đọc sách hoặc học bài.");
           } else if (l <= 1000) light_status = "NORMAL";
           else {
             light_status = "BRIGHT";
@@ -6506,13 +6232,8 @@
         return {
           analysis: analysis || localAnalyzeEnvironment(latest.ThongSo || {}),
           updatedAt:
-            root.updated_at ||
-            root.updatedAt ||
-            root.ThoiGian ||
-            "Realtime local",
-          source: fromPython
-            ? root.source || "Python MCP"
-            : "Dashboard local fallback",
+            root.updated_at || root.updatedAt || root.ThoiGian || "Realtime local",
+          source: fromPython ? root.source || "Python MCP" : "Dashboard local fallback",
         };
       }
 
@@ -6558,9 +6279,7 @@
           el.innerHTML = `<li class="mcp-empty">${escapeHtml(emptyText)}</li>`;
           return;
         }
-        el.innerHTML = arr
-          .map((item) => `<li>${escapeHtml(item)}</li>`)
-          .join("");
+        el.innerHTML = arr.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
       }
 
       function workspaceFeelingText(analysis) {
@@ -6580,11 +6299,7 @@
       function weatherIconSvg(analysis) {
         const overall = analysis?.overall;
         const light = analysis?.light_status;
-        if (
-          overall === "NEED_ATTENTION" ||
-          light === "DARK" ||
-          light === "DIM"
-        ) {
+        if (overall === "NEED_ATTENTION" || light === "DARK" || light === "DIM") {
           return `<svg viewBox="0 0 96 76"><path d="M28 56h38a16 16 0 0 0 0-32 23 23 0 0 0-44 8A12 12 0 0 0 28 56Z"/><path class="sun" d="M64 12v7M64 39v7M50 25h7M71 25h7M54 15l5 5M74 15l-5 5"/></svg>`;
         }
         return `<svg viewBox="0 0 96 76"><path d="M29 56h37a16 16 0 0 0 0-32 22 22 0 0 0-42 7A13 13 0 0 0 29 56Z"/><path class="sun" d="M59 8v7M59 42v7M42 25h7M69 25h7M47 13l5 5M73 13l-5 5"/></svg>`;
@@ -6603,29 +6318,18 @@
         setMcpBox("mcpLightStatus", a.light_status);
         setText("mcpSource", payload.source || "MCP: --");
         setText("mcpUpdatedAt", payload.updatedAt || "--");
-        setText(
-          "mcpComfort",
-          score === null ? "--" : String(Math.round(score)),
-        );
+        setText("mcpComfort", score === null ? "--" : String(Math.round(score)));
         const progresses = document.querySelectorAll("[id='mcpProgress']");
         progresses.forEach((p) => {
           p.style.width =
             score === null ? "0%" : `${Math.max(0, Math.min(100, score))}%`;
         });
-        setText(
-          "mcpSummary",
-          a.spoken_summary || "Chưa có dữ liệu phân tích MCP.",
-        );
+        setText("mcpSummary", a.spoken_summary || "Chưa có dữ liệu phân tích MCP.");
         setText(
           "workspaceSummary",
-          a.spoken_summary ||
-            statusVi(a.overall) ||
-            "Đang chờ dữ liệu môi trường",
+          a.spoken_summary || statusVi(a.overall) || "Đang chờ dữ liệu môi trường",
         );
-        setText(
-          "workspaceComfort",
-          score === null ? "--" : String(Math.round(score)),
-        );
+        setText("workspaceComfort", score === null ? "--" : String(Math.round(score)));
         setText("workspaceFeeling", workspaceFeelingText(a));
         const envIcon = $("workspaceWeatherIcon");
         if (envIcon) envIcon.innerHTML = weatherIconSvg(a);
@@ -6639,10 +6343,7 @@
         renderList("mcpAdviceList", a.advice, "Chưa có khuyến nghị.");
         renderList("mcpWarningsList", a.warnings, "Chưa có cảnh báo.");
         setText("chartMcpOverall", statusVi(a.overall));
-        setText(
-          "chartMcpComfort",
-          score === null ? "--" : `${Math.round(score)}/100`,
-        );
+        setText("chartMcpComfort", score === null ? "--" : `${Math.round(score)}/100`);
 
         // Cập nhật badge cho thẻ cảm biến ở trang Giám sát
         const tStatus = a.temperature_status;
@@ -6689,9 +6390,7 @@
         };
         try {
           await db.ref(robotPath("MCP/EnvironmentAnalysis")).set(payload);
-          alert(
-            "Đã phân tích môi trường và ghi kết quả lên MCP/EnvironmentAnalysis.",
-          );
+          alert("Đã phân tích môi trường và ghi kết quả lên MCP/EnvironmentAnalysis.");
         } catch (err) {
           alert(
             isPermissionDenied(err)
@@ -6761,7 +6460,7 @@
       }
       window.clearPythonChatInput = clearPythonChatInput;
 
-      // ---------------- Latency measurement ----------------
+      // Latency measurement
       function toMs(value) {
         const n = Number(value);
         return Number.isFinite(n) ? n : 0;
@@ -6807,11 +6506,7 @@
 
         const webReceivedAt = Date.now();
         const latencyMs = webReceivedAt - espSentAt;
-        if (
-          !Number.isFinite(latencyMs) ||
-          latencyMs < -10000 ||
-          latencyMs > 600000
-        ) {
+        if (!Number.isFinite(latencyMs) || latencyMs < -10000 || latencyMs > 600000) {
           console.warn("Timestamp cảm biến có thể chưa đồng bộ NTP:", {
             espSentAt,
             webReceivedAt,
@@ -6866,15 +6561,10 @@
             ack.RobotExecutedAt,
         );
         const webAckReceivedAt = Date.now();
-        const command =
-          ack.command || ack.Command || localPending.command || "--";
+        const command = ack.command || ack.Command || localPending.command || "--";
 
-        const latencyToRobotMs = espReceivedAt
-          ? espReceivedAt - webSentAt
-          : null;
-        const latencyToExecuteMs = espExecutedAt
-          ? espExecutedAt - webSentAt
-          : null;
+        const latencyToRobotMs = espReceivedAt ? espReceivedAt - webSentAt : null;
+        const latencyToExecuteMs = espExecutedAt ? espExecutedAt - webSentAt : null;
         const roundTripMs = webAckReceivedAt - webSentAt;
 
         console.log("[LATENCY_COMMAND]", {
@@ -6918,9 +6608,7 @@
         );
       }
 
-      db.ref(".info/connected").on("value", (snap) =>
-        setFirebaseStatus(!!snap.val()),
-      );
+      db.ref(".info/connected").on("value", (snap) => setFirebaseStatus(!!snap.val()));
       listen(robotPath("ThietBi"), "ThietBi");
       listen(robotPath("ThongSo"), "ThongSo", (ts) => {
         pushRealtimeChart(ts);
@@ -6948,11 +6636,7 @@
       listen(robotPath("Audio"), "Audio");
       listen(robotPath("GiamSat"), "RobotGiamSat");
       listen("RobotDashboard/NhatKyDangNhap", "NhatKyDangNhap", renderLogs);
-      listen(
-        robotPath("Pomodoro/LichSu"),
-        "PomodoroLichSu",
-        renderPomodoroHistory,
-      );
+      listen(robotPath("Pomodoro/LichSu"), "PomodoroLichSu", renderPomodoroHistory);
       db.ref(robotPath("ThietBi/CommandAck")).on("value", (snap) => {
         handleCommandAckLatency(snap.val() || {});
       });
@@ -6961,9 +6645,7 @@
         const msg = String(
           (err && (err.message || err.code || err)) || "",
         ).toUpperCase();
-        return (
-          msg.includes("PERMISSION_DENIED") || msg.includes("PERMISSION DENIED")
-        );
+        return msg.includes("PERMISSION_DENIED") || msg.includes("PERMISSION DENIED");
       }
       function firebasePermissionMessage(actionText) {
         return `PERMISSION_DENIED: Firebase chưa cho phép ${actionText}. Vào Firebase Realtime Database > Rules, dán nội dung file database.rules.json rồi bấm Publish.`;
@@ -7023,8 +6705,7 @@
           $("rawData").textContent = JSON.stringify(root.val() || {}, null, 2);
           if (scroll) $("rawData").scrollTop = 0;
         } catch (err) {
-          $("rawData").textContent =
-            err.message || "Không lấy được dữ liệu thô";
+          $("rawData").textContent = err.message || "Không lấy được dữ liệu thô";
         }
       }
       window.refreshRaw = refreshRaw;
@@ -7051,16 +6732,10 @@
         ]);
         const csv = [header, ...rows]
           .map((row) =>
-            row
-              .map((x) => `"${String(x ?? "").replace(/"/g, '""')}"`)
-              .join(","),
+            row.map((x) => `"${String(x ?? "").replace(/"/g, '""')}"`).join(","),
           )
           .join("\n");
-        downloadFile(
-          "nhat_ky_robot.csv",
-          "\ufeff" + csv,
-          "text/csv;charset=utf-8",
-        );
+        downloadFile("nhat_ky_robot.csv", "\ufeff" + csv, "text/csv;charset=utf-8");
       }
       window.exportLogsCsv = exportLogsCsv;
 
@@ -7080,9 +6755,7 @@
 
       async function exportHistoryCsv() {
         const dateKey = $("historyDate").value || todayKey();
-        const snap = await db
-          .ref(robotPath(`LichSuCamBien/${dateKey}`))
-          .once("value");
+        const snap = await db.ref(robotPath(`LichSuCamBien/${dateKey}`)).once("value");
         const rows = Object.values(snap.val() || {});
         if (!rows.length) {
           alert(`Ngày ${dateKey} chưa có dữ liệu lịch sử cảm biến.`);
@@ -7112,9 +6785,7 @@
           ]);
         const csv = [header, ...csvRows]
           .map((row) =>
-            row
-              .map((x) => `"${String(x ?? "").replace(/"/g, '""')}"`)
-              .join(","),
+            row.map((x) => `"${String(x ?? "").replace(/"/g, '""')}"`).join(","),
           )
           .join("\n");
         downloadFile(
@@ -7125,7 +6796,7 @@
       }
       window.exportHistoryCsv = exportHistoryCsv;
 
-      // ---------------- Pomodoro ----------------
+      // Pomodoro
       const pomoState = {
         focusMinutes: 25,
         breakMinutes: 5,
@@ -7167,10 +6838,7 @@
           $("longBreakMinutes").value = longBreak;
           const remain = num(pomo.conLaiGiay ?? pomo.ConLaiGiay, focus * 60);
           pomoState.remainingSeconds = remain;
-          pomoState.totalSeconds = num(
-            pomo.tongGiay ?? pomo.TongGiay,
-            focus * 60,
-          );
+          pomoState.totalSeconds = num(pomo.tongGiay ?? pomo.TongGiay, focus * 60);
           pomoState.mode = pomo.mode || pomo.Mode || pomoState.mode;
           pomoState.round = num(pomo.vong ?? pomo.Vong, pomoState.round);
           pomoState.completed = num(
@@ -7212,8 +6880,7 @@
         $("timerModeChip").textContent = modeLabel(pomoState.mode);
         $("timerMain").textContent = formatSeconds(pomoState.remainingSeconds);
         $("timerStatusText").textContent = modeStatusText();
-        $("timerProgress").style.width =
-          `${Math.max(0, Math.min(100, percent))}%`;
+        $("timerProgress").style.width = `${Math.max(0, Math.min(100, percent))}%`;
         setText("sessionCount", String(pomoState.completed));
         setText("sessionRound", String(pomoState.round));
         setText(
@@ -7279,10 +6946,7 @@
       function applyPomodoroConfig() {
         pomoState.focusMinutes = Math.max(1, num($("focusMinutes").value, 25));
         pomoState.breakMinutes = Math.max(1, num($("breakMinutes").value, 5));
-        pomoState.longBreakMinutes = Math.max(
-          1,
-          num($("longBreakMinutes").value, 15),
-        );
+        pomoState.longBreakMinutes = Math.max(1, num($("longBreakMinutes").value, 15));
         if (!pomoState.running && !pomoState.paused) {
           pomoState.totalSeconds = pomoState.focusMinutes * 60;
           pomoState.remainingSeconds = pomoState.totalSeconds;
@@ -7362,10 +7026,7 @@
         if (pomoState.mode === "study") pomoState.totalStudyTodaySeconds += 1;
         renderPomodoro();
         const now = Date.now();
-        if (
-          now - pomoState.lastSync > 5000 ||
-          pomoState.remainingSeconds <= 0
-        ) {
+        if (now - pomoState.lastSync > 5000 || pomoState.remainingSeconds <= 0) {
           pomoState.lastSync = now;
           syncPomodoro();
         }
@@ -7405,7 +7066,7 @@
         }
       }
 
-      // ------------ History chart by date ------------
+      // History chart by date
       $("historyDate").value = todayKey();
 
       function setTodayAndLoadHistory() {
@@ -7421,9 +7082,7 @@
             .ref(robotPath(`LichSuCamBien/${dateKey}`))
             .once("value");
           const raw = Object.values(snap.val() || {});
-          raw.sort(
-            (a, b) => Number(a.timestamp || 0) - Number(b.timestamp || 0),
-          );
+          raw.sort((a, b) => Number(a.timestamp || 0) - Number(b.timestamp || 0));
           selectedHistoryRows = raw;
           const maxChartPoints = 80;
           const step = Math.max(1, Math.ceil(raw.length / maxChartPoints));
@@ -7434,21 +7093,16 @@
               const parts = s.split(" ");
               return parts[0] || s;
             }
-            return new Date(r.timestamp || Date.now()).toLocaleTimeString(
-              "vi-VN",
-              {
-                hour: "2-digit",
-                minute: "2-digit",
-              },
-            );
+            return new Date(r.timestamp || Date.now()).toLocaleTimeString("vi-VN", {
+              hour: "2-digit",
+              minute: "2-digit",
+            });
           });
           historyChart.data.labels = labels;
           historyChart.data.datasets[0].data = chartRows.map((r) =>
             num(r.nhietDo, null),
           );
-          historyChart.data.datasets[1].data = chartRows.map((r) =>
-            num(r.doAm, null),
-          );
+          historyChart.data.datasets[1].data = chartRows.map((r) => num(r.doAm, null));
           historyChart.data.datasets[2].data = chartRows.map((r) =>
             num(r.anhSang, null),
           );
@@ -7564,11 +7218,8 @@
       async function grantRobotAccess() {
         if (!isAdmin) return alert("Chỉ admin mới được cấp quyền robot.");
         const email = ($("adminUserEmail")?.value || "").trim().toLowerCase();
-        const robotId = safeRobotId(
-          $("adminRobotId")?.value || DEFAULT_ROBOT_ID,
-        );
-        if (!email || !robotId)
-          return alert("Nhập email người dùng và Robot ID.");
+        const robotId = safeRobotId($("adminRobotId")?.value || DEFAULT_ROBOT_ID);
+        if (!email || !robotId) return alert("Nhập email người dùng và Robot ID.");
         try {
           const snap = await db.ref("RobotDashboard/TaiKhoan").once("value");
           const found = findAccountEntryByEmail(snap.val() || {}, email);
@@ -7600,11 +7251,8 @@
       async function revokeRobotAccess() {
         if (!isAdmin) return alert("Chỉ admin mới được thu hồi quyền robot.");
         const email = ($("adminUserEmail")?.value || "").trim().toLowerCase();
-        const robotId = safeRobotId(
-          $("adminRobotId")?.value || DEFAULT_ROBOT_ID,
-        );
-        if (!email || !robotId)
-          return alert("Nhập email người dùng và Robot ID.");
+        const robotId = safeRobotId($("adminRobotId")?.value || DEFAULT_ROBOT_ID);
+        if (!email || !robotId) return alert("Nhập email người dùng và Robot ID.");
         try {
           const snap = await db.ref("RobotDashboard/TaiKhoan").once("value");
           const found = findAccountEntryByEmail(snap.val() || {}, email);
@@ -7671,7 +7319,7 @@
       }
       window.createRobotRegistry = createRobotRegistry;
 
-      // ---------------- UserData / Study / Settings ----------------
+      // UserData / Study / Settings
       function accountKey() {
         if (user.key) return String(user.key);
         const base = String(user.name || user.email || "user")
@@ -7696,9 +7344,7 @@
         setText("settingsRoleBadge", `Quyền: ${roleLabel()}`);
         const list = $("settingsRobotList");
         if (list) {
-          const ids = isAdmin
-            ? ["ALL ROBOTS"]
-            : Object.keys(user.robotIds || {});
+          const ids = isAdmin ? ["ALL ROBOTS"] : Object.keys(user.robotIds || {});
           list.innerHTML = (ids.length ? ids : [activeRobotId])
             .map((id) => `<span>${escapeHtml(id)}</span>`)
             .join("");
@@ -7735,15 +7381,11 @@
         const confirmPass = $("confirmPassword")?.value || "";
         if (!oldPass || !newPass || !confirmPass)
           return alert("Nhập đủ mật khẩu cũ, mật khẩu mới và xác nhận.");
-        if (newPass.length < 4)
-          return alert("Mật khẩu mới nên có ít nhất 4 ký tự.");
-        if (newPass !== confirmPass)
-          return alert("Mật khẩu mới nhập lại chưa khớp.");
+        if (newPass.length < 4) return alert("Mật khẩu mới nên có ít nhất 4 ký tự.");
+        if (newPass !== confirmPass) return alert("Mật khẩu mới nhập lại chưa khớp.");
         try {
           const key = accountKey();
-          const snap = await db
-            .ref(`RobotDashboard/TaiKhoan/${key}`)
-            .once("value");
+          const snap = await db.ref(`RobotDashboard/TaiKhoan/${key}`).once("value");
           const acc = snap.val() || {};
           const currentPass = acc.password || acc.matKhau || acc.MatKhau || "";
           if (String(currentPass) !== String(oldPass))
@@ -7784,9 +7426,7 @@
         const table = $("studyScheduleTable");
         if (!table) return;
         try {
-          const snap = await db
-            .ref(userDataPath("StudySchedule"))
-            .once("value");
+          const snap = await db.ref(userDataPath("StudySchedule")).once("value");
           const rows = Object.entries(snap.val() || {}).map(([id, r]) => ({
             id,
             ...(typeof r === "object" ? r : {}),
@@ -7846,8 +7486,7 @@
           createdAt: Date.now(),
           email: user.email || "",
         };
-        if (!payload.subject)
-          return alert("Nhập môn học hoặc nội dung cần học.");
+        if (!payload.subject) return alert("Nhập môn học hoặc nội dung cần học.");
         try {
           await db.ref(userDataPath("StudySchedule")).push(payload);
           $("studySubject").value = "";
