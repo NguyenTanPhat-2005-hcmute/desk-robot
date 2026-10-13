@@ -230,21 +230,3 @@ npm run format:check
 
 Quy tắc nằm trong `pyproject.toml`, `.prettierrc.json`, `.clang-format` và `.editorconfig`.
 
-## Đưa lên GitHub
-
-Commit source, file mẫu và `package-lock.json`. `.gitignore` loại cấu hình riêng, môi trường ảo, thư viện tải về và thư mục `.tools`. Nếu thư mục được tải từ ZIP và chưa có Git, chạy `git init` trước.
-
-```powershell
-git add .
-git diff --cached --name-only
-```
-
-Danh sách không được chứa `.env`, `config.local.js`, `secrets.h` hoặc `.tools`. Nếu tải file bằng giao diện GitHub, bạn phải tự loại chúng vì giao diện tải lên không áp dụng `.gitignore`.
-
-Nếu mật khẩu hoặc secret từng được công khai, hãy thay mới chúng; `.gitignore` không xóa dữ liệu khỏi lịch sử commit.
-
-## Giới hạn bảo mật
-
-Cấu hình riêng được giữ khỏi repository. Firebase Web config và EmailJS vẫn có thể xem được trong trình duyệt khi website chạy. Không đặt private key hoặc service account trong JavaScript. Theo [tài liệu Firebase](https://firebase.google.com/docs/projects/api-keys), dữ liệu phải được bảo vệ bằng Security Rules thay vì dựa vào việc giấu Web API key.
-
-`database.rules.json` hiện cho phép đọc/ghi công khai để demo. Luồng đăng nhập kiểm tra mật khẩu và OTP ở phía trình duyệt và lưu mật khẩu trong database. Cần thay bằng Firebase Authentication, Security Rules phù hợp và xác minh OTP ở backend trước khi triển khai công khai.
